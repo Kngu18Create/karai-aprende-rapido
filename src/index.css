@@ -5,87 +5,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* KarAI Design System - Paleta oscura con mejor contraste */
+/* KarAI Design System - Modern Tech Palette */
 
 @layer base {
   :root {
-    --background: 28 32 38;
-    --foreground: 245 242 235;
+    --background: 10 15 30;
+    --foreground: 255 255 255;
 
-    --card: 38 44 52;
-    --card-foreground: 245 242 235;
+    --card: 30 41 59;
+    --card-foreground: 255 255 255;
 
-    --popover: 38 44 52;
-    --popover-foreground: 245 242 235;
+    --popover: 30 41 59;
+    --popover-foreground: 255 255 255;
 
-    --primary: 96 165 250;
-    --primary-foreground: 15 23 42;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 52 64 76;
-    --secondary-foreground: 226 226 220;
+    --secondary: 51 65 85;
+    --secondary-foreground: 226 232 240;
 
-    --muted: 52 64 76;
+    --muted: 51 65 85;
     --muted-foreground: 148 163 184;
 
-    --accent: 160 110 85;
-    --accent-foreground: 245 242 235;
+    --accent: 59 130 246;
+    --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
     --border: 71 85 105;
     --input: 71 85 105;
-    --ring: 96 165 250;
+    --ring: 59 130 246;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 38 44 52;
+    --sidebar-background: 15 23 42;
     --sidebar-foreground: 203 213 225;
-    --sidebar-primary: 96 165 250;
-    --sidebar-primary-foreground: 15 23 42;
-    --sidebar-accent: 52 64 76;
-    --sidebar-accent-foreground: 226 226 220;
+    --sidebar-primary: 59 130 246;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 51 65 85;
+    --sidebar-accent-foreground: 226 232 240;
     --sidebar-border: 71 85 105;
-    --sidebar-ring: 96 165 250;
+    --sidebar-ring: 59 130 246;
   }
 
   .dark {
-    --background: 28 32 38;
-    --foreground: 245 242 235;
+    --background: 10 15 30;
+    --foreground: 255 255 255;
 
-    --card: 38 44 52;
-    --card-foreground: 245 242 235;
+    --card: 30 41 59;
+    --card-foreground: 255 255 255;
 
-    --popover: 38 44 52;
-    --popover-foreground: 245 242 235;
+    --popover: 30 41 59;
+    --popover-foreground: 255 255 255;
 
-    --primary: 96 165 250;
-    --primary-foreground: 15 23 42;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 52 64 76;
-    --secondary-foreground: 226 226 220;
+    --secondary: 51 65 85;
+    --secondary-foreground: 226 232 240;
 
-    --muted: 52 64 76;
+    --muted: 51 65 85;
     --muted-foreground: 148 163 184;
 
-    --accent: 160 110 85;
-    --accent-foreground: 245 242 235;
+    --accent: 59 130 246;
+    --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
     --border: 71 85 105;
     --input: 71 85 105;
-    --ring: 96 165 250;
+    --ring: 59 130 246;
 
-    --sidebar-background: 38 44 52;
+    --sidebar-background: 15 23 42;
     --sidebar-foreground: 203 213 225;
-    --sidebar-primary: 96 165 250;
-    --sidebar-primary-foreground: 15 23 42;
-    --sidebar-accent: 52 64 76;
-    --sidebar-accent-foreground: 226 226 220;
+    --sidebar-primary: 59 130 246;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 51 65 85;
+    --sidebar-accent-foreground: 226 232 240;
     --sidebar-border: 71 85 105;
-    --sidebar-ring: 96 165 250;
+    --sidebar-ring: 59 130 246;
   }
 }
 
@@ -95,7 +95,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-foreground font-inter min-h-screen;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -106,36 +106,44 @@
 }
 
 @layer utilities {
-  .dark-gradient {
-    @apply bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900;
+  .tech-gradient {
+    @apply bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900;
+  }
+  
+  .primary-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-blue-500;
+  }
+  
+  .secondary-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600;
   }
   
   .accent-gradient {
-    @apply bg-gradient-to-r from-blue-400 to-blue-600;
-  }
-  
-  .warm-accent-gradient {
-    @apply bg-gradient-to-r from-orange-400 to-red-400;
+    @apply bg-gradient-to-r from-blue-500 to-cyan-500;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
   }
   
-  .warm-gradient-text {
-    @apply bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent;
+  .glassmorphism {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20;
+  }
+  
+  .card-glass {
+    @apply backdrop-blur-sm bg-slate-800/50 border border-slate-700/50;
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:shadow-blue-500/20;
+    @apply transition-all duration-300 hover:bg-slate-700/50 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20;
   }
   
-  .glass-effect {
-    @apply backdrop-blur-sm bg-card/80 border border-border shadow-lg;
+  .button-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200 active:scale-95;
   }
   
-  .accent-shadow {
-    @apply shadow-lg shadow-blue-500/10;
+  .button-secondary {
+    @apply bg-slate-700 hover:bg-slate-600 text-white border border-slate-600 px-6 py-3 rounded-lg transition-colors duration-200 active:scale-95;
   }
 
   .font-inter {
@@ -147,10 +155,49 @@
   }
 }
 
-/* Animaciones suaves */
+/* Critical Fix: Proper 3D Flip Animation for Flashcards */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 300px;
+}
+
+.flashcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+/* Micro-interactions */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
 }
 
 .animate-float {
@@ -160,7 +207,7 @@
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -172,52 +219,42 @@
   animation: fade-up 0.6s ease-out;
 }
 
-/* Animación de flip para flashcards */
-@keyframes flip-to-back {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(-90deg); }
-  100% { transform: rotateY(0deg); }
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-@keyframes flip-to-front {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(90deg); }
-  100% { transform: rotateY(0deg); }
+.animate-scale-up {
+  animation: scale-up 0.4s ease-out;
 }
 
-.flip-to-back {
-  animation: flip-to-back 0.6s ease-in-out;
+/* Progress bar improvements */
+.progress-gradient {
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
 }
 
-.flip-to-front {
-  animation: flip-to-front 0.6s ease-in-out;
+/* Glassmorphism effects */
+.glass-card {
+  backdrop-filter: blur(16px);
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.card-flip {
-  perspective: 1000px;
-}
-
-.card-flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.card-flip.flipped .card-flip-inner {
-  transform: rotateY(180deg);
-}
-
-.card-flip-front, .card-flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-}
-
-.card-flip-back {
-  transform: rotateY(180deg);
+/* Mobile touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease-out;
+  }
+  
+  .flashcard:active {
+    transform: scale(0.98);
+  }
 }

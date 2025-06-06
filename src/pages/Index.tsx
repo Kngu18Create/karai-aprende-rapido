@@ -41,11 +41,13 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen dark-gradient">
+    <div className="min-h-screen tech-gradient">
       <div className="flex w-full">
         <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-        <main className="flex-1 p-6">
-          {renderActiveSection()}
+        <main className="flex-1 p-6 overflow-auto">
+          <div className="animate-fade-up">
+            {renderActiveSection()}
+          </div>
         </main>
       </div>
     </div>

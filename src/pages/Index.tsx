@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Welcome } from "@/pages/Welcome";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import { FileUpload } from "@/components/files/FileUpload";
@@ -9,7 +10,12 @@ import { QuizManager } from "@/components/quiz/QuizManager";
 import { ProgressOverview } from "@/components/progress/ProgressOverview";
 
 const Index = () => {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [activeSection, setActiveSection] = useState("dashboard");
+
+  const handleGetStarted = () => {
+    setShowWelcome(false);
+  };
 
   const renderActiveSection = () => {
     switch (activeSection) {
@@ -29,6 +35,10 @@ const Index = () => {
         return <Dashboard onNavigate={setActiveSection} />;
     }
   };
+
+  if (showWelcome) {
+    return <Welcome onGetStarted={handleGetStarted} />;
+  }
 
   return (
     <div className="min-h-screen gradient-bg">

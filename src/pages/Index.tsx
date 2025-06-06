@@ -41,7 +41,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen gradient-bg">
+    <div className="min-h-screen dark-gradient">
       <div className="flex w-full">
         <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
         <main className="flex-1 p-6">

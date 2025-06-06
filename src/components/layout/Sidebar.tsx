@@ -31,12 +31,12 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
   };
 
   return (
-    <div className="w-72 min-h-screen glass-effect border-r border-orange-100 shadow-lg">
+    <div className="w-72 min-h-screen glass-effect border-r border-border accent-shadow">
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 warm-gradient rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 accent-gradient rounded-xl flex items-center justify-center shadow-lg">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -63,15 +63,15 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
               className={cn(
                 "w-full flex items-center gap-4 px-4 py-3 rounded-xl text-left transition-all duration-300 group",
                 activeSection === item.id
-                  ? "warm-gradient text-white shadow-lg transform scale-[1.02]"
-                  : "text-muted-foreground hover:bg-orange-50 hover:text-orange-700"
+                  ? "accent-gradient text-white shadow-lg transform scale-[1.02]"
+                  : "text-muted-foreground hover:bg-secondary hover:text-primary"
               )}
             >
               <div className="flex items-center gap-3">
                 <span className="text-lg">{item.emoji}</span>
                 <item.icon className={cn(
                   "w-5 h-5",
-                  activeSection === item.id ? "text-white" : "text-orange-400"
+                  activeSection === item.id ? "text-white" : "text-primary"
                 )} />
               </div>
               <span className="font-medium group-hover:translate-x-1 transition-transform duration-200">
@@ -82,27 +82,27 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
         </nav>
 
         {/* Quick Stats */}
-        <div className="mt-8 p-4 bg-orange-50 rounded-xl border border-orange-100">
-          <div className="text-sm font-medium text-orange-900 mb-2">
+        <div className="mt-8 p-4 bg-secondary rounded-xl border border-border">
+          <div className="text-sm font-medium text-foreground mb-2">
             🎯 Progreso de hoy
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-orange-700">Objetivo diario</span>
-              <span className="text-orange-700 font-medium">75%</span>
+              <span className="text-muted-foreground">Objetivo diario</span>
+              <span className="text-foreground font-medium">75%</span>
             </div>
-            <div className="w-full bg-orange-200 rounded-full h-2">
-              <div className="warm-gradient h-2 rounded-full w-3/4 shadow-sm"></div>
+            <div className="w-full bg-muted rounded-full h-2">
+              <div className="accent-gradient h-2 rounded-full w-3/4 shadow-sm"></div>
             </div>
           </div>
         </div>
 
         {/* Motivational Quote */}
-        <div className="mt-6 p-4 bg-green-50 rounded-xl border border-green-100">
-          <div className="text-sm text-green-800 font-medium mb-1">
+        <div className="mt-6 p-4 bg-accent/10 rounded-xl border border-accent/20">
+          <div className="text-sm text-accent font-medium mb-1">
             💡 Tip del día
           </div>
-          <div className="text-xs text-green-700 leading-relaxed">
+          <div className="text-xs text-muted-foreground leading-relaxed">
             "La repetición espaciada mejora la retención hasta un 90%. ¡Sigue practicando!"
           </div>
         </div>

@@ -16,14 +16,23 @@ import {
   SkipForward,
   TrendingUp,
   Clock,
-  Target
+  Target,
+  RefreshCw
 } from "lucide-react";
+
+interface FlashcardOption {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+}
 
 export const FlashcardsManager = () => {
   const [studyMode, setStudyMode] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [userAnswer, setUserAnswer] = useState("");
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const [flashcards] = useState([
     {
@@ -35,7 +44,14 @@ export const FlashcardsManager = () => {
       mastery: 75,
       nextReview: "2024-01-16",
       timesStudied: 12,
-      correctAnswers: 9
+      correctAnswers: 9,
+      type: "equation",
+      options: [
+        { id: "a", text: "x²/a² + y²/b² = 1", isCorrect: true },
+        { id: "b", text: "x²/a² - y²/b² = 1", isCorrect: false },
+        { id: "c", text: "(x-h)²/a² + (y-k)²/b² = 1", isCorrect: false },
+        { id: "d", text: "x² + y² = r²", isCorrect: false }
+      ]
     },
     {
       id: 2,
@@ -46,7 +62,8 @@ export const FlashcardsManager = () => {
       mastery: 60,
       nextReview: "2024-01-17",
       timesStudied: 8,
-      correctAnswers: 5
+      correctAnswers: 5,
+      type: "text"
     },
     {
       id: 3,
@@ -57,7 +74,8 @@ export const FlashcardsManager = () => {
       mastery: 45,
       nextReview: "2024-01-15",
       timesStudied: 6,
-      correctAnswers: 3
+      correctAnswers: 3,
+      type: "text"
     }
   ]);
 
@@ -65,22 +83,35 @@ export const FlashcardsManager = () => {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "easy": return "text-green-600 bg-green-100";
-      case "medium": return "text-yellow-600 bg-yellow-100";
-      case "hard": return "text-red-600 bg-red-100";
-      default: return "text-gray-600 bg-gray-100";
+      case "easy": return "text-green-400 bg-green-900/20 border-green-500/30";
+      case "medium": return "text-yellow-400 bg-yellow-900/20 border-yellow-500/30";
+      case "hard": return "text-red-400 bg-red-900/20 border-red-500/30";
+      default: return "text-muted-foreground bg-muted";
     }
   };
 
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   const handleAnswer = (correct: boolean) => {
-    // Aquí iría la lógica de repetición espaciada
     setShowAnswer(false);
     setUserAnswer("");
+    setSelectedOption(null);
+    setIsFlipped(false);
     if (currentCardIndex < flashcards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
     } else {
       setStudyMode(false);
       setCurrentCardIndex(0);
+    }
+  };
+
+  const handleOptionSelect = (optionId: string) => {
+    setSelectedOption(optionId);
+    const option = currentCard.options?.find(opt => opt.id === optionId);
+    if (option) {
+      setShowAnswer(true);
     }
   };
 
@@ -94,7 +125,7 @@ export const FlashcardsManager = () => {
         {/* Header de estudio */}
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold">Sesión de Estudio</h2>
+            <h2 className="text-2xl font-bold text-foreground">Sesión de Estudio</h2>
             <p className="text-muted-foreground">
               Tarjeta {currentCardIndex + 1} de {flashcards.length}
             </p>
@@ -114,40 +145,124 @@ export const FlashcardsManager = () => {
         {/* Progreso */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span>Progreso de la sesión</span>
-            <span>{Math.round(((currentCardIndex + 1) / flashcards.length) * 100)}%</span>
+            <span className="text-foreground">Progreso de la sesión</span>
+            <span className="text-foreground">{Math.round(((currentCardIndex + 1) / flashcards.length) * 100)}%</span>
           </div>
           <Progress value={((currentCardIndex + 1) / flashcards.length) * 100} className="h-2" />
         </div>
 
-        {/* Flashcard */}
-        <Card className="min-h-[400px]">
-          <CardHeader>
-            <div className="flex justify-between items-start">
-              <div className="space-y-2">
-                <Badge className={getDifficultyColor(currentCard.difficulty)}>
-                  {currentCard.difficulty === "easy" ? "Fácil" : 
-                   currentCard.difficulty === "medium" ? "Intermedio" : "Difícil"}
-                </Badge>
-                <Badge variant="outline">{currentCard.subject}</Badge>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-muted-foreground">Dominio</p>
-                <p className="text-lg font-bold">{currentCard.mastery}%</p>
-              </div>
+        {/* Flashcard con efecto flip */}
+        <div className="flex justify-center">
+          <div className={`card-flip ${isFlipped ? 'flipped' : ''} w-full max-w-2xl h-96`}>
+            <div className="card-flip-inner">
+              {/* Frente - Pregunta */}
+              <Card className="card-flip-front card-hover">
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div className="space-y-2">
+                      <Badge className={getDifficultyColor(currentCard.difficulty)}>
+                        {currentCard.difficulty === "easy" ? "Fácil" : 
+                         currentCard.difficulty === "medium" ? "Intermedio" : "Difícil"}
+                      </Badge>
+                      <Badge variant="outline" className="border-primary text-primary">{currentCard.subject}</Badge>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">Dominio</p>
+                      <p className="text-lg font-bold text-foreground">{currentCard.mastery}%</p>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-6 flex flex-col justify-center h-full">
+                  <div className="text-center space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">{currentCard.question}</h3>
+                    
+                    <Button onClick={handleFlip} variant="outline" className="mt-4">
+                      <RefreshCw className="w-4 h-4 mr-2" />
+                      Ver Respuesta
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Reverso - Respuesta */}
+              <Card className="card-flip-back card-hover">
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <Badge variant="outline" className="border-primary text-primary">{currentCard.subject}</Badge>
+                    <Button onClick={handleFlip} variant="ghost" size="sm">
+                      <RefreshCw className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="text-center space-y-4">
+                    <div className="p-4 bg-secondary rounded-lg border border-border">
+                      <h4 className="font-semibold mb-2 text-foreground">Respuesta:</h4>
+                      <p className="text-sm text-muted-foreground">{currentCard.answer}</p>
+                    </div>
+
+                    <div className="flex gap-4 justify-center">
+                      <Button 
+                        variant="outline" 
+                        className="text-red-400 border-red-500/30 hover:bg-red-900/20"
+                        onClick={() => handleAnswer(false)}
+                      >
+                        <X className="w-4 h-4 mr-2" />
+                        Incorrecta
+                      </Button>
+                      <Button 
+                        className="bg-green-600 hover:bg-green-700"
+                        onClick={() => handleAnswer(true)}
+                      >
+                        <Check className="w-4 h-4 mr-2" />
+                        Correcta
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="text-center space-y-4">
-              <h3 className="text-xl font-semibold">{currentCard.question}</h3>
+          </div>
+        </div>
+
+        {/* Modo alternativo: Input de respuesta o opciones múltiples */}
+        {!isFlipped && (
+          <Card className="max-w-2xl mx-auto">
+            <CardContent className="p-6">
+              <h4 className="font-semibold mb-4 text-center text-foreground">
+                Modo de práctica alternativo
+              </h4>
               
-              {!showAnswer && (
+              {currentCard.type === "equation" && currentCard.options ? (
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground text-center mb-4">
+                    Selecciona la respuesta correcta:
+                  </p>
+                  {currentCard.options.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => handleOptionSelect(option.id)}
+                      className={`w-full p-3 text-left rounded-lg border transition-all duration-200 ${
+                        selectedOption === option.id
+                          ? option.isCorrect
+                            ? "border-green-500 bg-green-900/20 text-green-400"
+                            : "border-red-500 bg-red-900/20 text-red-400"
+                          : "border-border bg-card hover:bg-secondary"
+                      }`}
+                      disabled={showAnswer}
+                    >
+                      <span className="font-medium mr-2">{option.id.toUpperCase()})</span>
+                      {option.text}
+                    </button>
+                  ))}
+                </div>
+              ) : (
                 <div className="space-y-4">
                   <Input
                     placeholder="Escribe tu respuesta aquí..."
                     value={userAnswer}
                     onChange={(e) => setUserAnswer(e.target.value)}
-                    className="text-center"
+                    className="text-center bg-secondary border-border"
                   />
                   <Button onClick={checkAnswer} className="w-full">
                     <Check className="w-4 h-4 mr-2" />
@@ -155,55 +270,25 @@ export const FlashcardsManager = () => {
                   </Button>
                 </div>
               )}
+            </CardContent>
+          </Card>
+        )}
 
-              {showAnswer && (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Respuesta correcta:</h4>
-                    <p className="text-sm">{currentCard.answer}</p>
-                  </div>
-                  
-                  {userAnswer && (
-                    <div className="p-4 bg-blue-50 rounded-lg">
-                      <h4 className="font-semibold mb-2">Tu respuesta:</h4>
-                      <p className="text-sm">{userAnswer}</p>
-                    </div>
-                  )}
-
-                  <div className="flex gap-4 justify-center">
-                    <Button 
-                      variant="outline" 
-                      className="text-red-600 border-red-200"
-                      onClick={() => handleAnswer(false)}
-                    >
-                      <X className="w-4 h-4 mr-2" />
-                      Incorrecta
-                    </Button>
-                    <Button 
-                      className="bg-green-600 hover:bg-green-700"
-                      onClick={() => handleAnswer(true)}
-                    >
-                      <Check className="w-4 h-4 mr-2" />
-                      Correcta
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Estadísticas de la tarjeta */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-              <div className="text-center">
+        {/* Estadísticas de la tarjeta */}
+        <Card className="max-w-2xl mx-auto">
+          <CardContent className="p-4">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
                 <p className="text-xs text-muted-foreground">Estudiada</p>
-                <p className="font-semibold">{currentCard.timesStudied} veces</p>
+                <p className="font-semibold text-foreground">{currentCard.timesStudied} veces</p>
               </div>
-              <div className="text-center">
+              <div>
                 <p className="text-xs text-muted-foreground">Aciertos</p>
-                <p className="font-semibold">{currentCard.correctAnswers}/{currentCard.timesStudied}</p>
+                <p className="font-semibold text-foreground">{currentCard.correctAnswers}/{currentCard.timesStudied}</p>
               </div>
-              <div className="text-center">
+              <div>
                 <p className="text-xs text-muted-foreground">Próxima revisión</p>
-                <p className="font-semibold text-xs">{currentCard.nextReview}</p>
+                <p className="font-semibold text-xs text-foreground">{currentCard.nextReview}</p>
               </div>
             </div>
           </CardContent>
@@ -223,31 +308,31 @@ export const FlashcardsManager = () => {
 
       {/* Estadísticas generales */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="card-hover">
           <CardContent className="p-4 text-center">
-            <Brain className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">{flashcards.length}</p>
+            <Brain className="w-8 h-8 text-primary mx-auto mb-2" />
+            <p className="text-2xl font-bold text-foreground">{flashcards.length}</p>
             <p className="text-sm text-muted-foreground">Flashcards totales</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardContent className="p-4 text-center">
-            <Target className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">60%</p>
+            <Target className="w-8 h-8 text-green-400 mx-auto mb-2" />
+            <p className="text-2xl font-bold text-foreground">60%</p>
             <p className="text-sm text-muted-foreground">Dominio promedio</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardContent className="p-4 text-center">
-            <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">8</p>
+            <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+            <p className="text-2xl font-bold text-foreground">8</p>
             <p className="text-sm text-muted-foreground">Para revisar hoy</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardContent className="p-4 text-center">
-            <TrendingUp className="w-8 h-8 text-orange-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">7</p>
+            <TrendingUp className="w-8 h-8 text-accent mx-auto mb-2" />
+            <p className="text-2xl font-bold text-foreground">7</p>
             <p className="text-sm text-muted-foreground">Días de racha</p>
           </CardContent>
         </Card>
@@ -255,7 +340,7 @@ export const FlashcardsManager = () => {
 
       {/* Acciones principales */}
       <div className="flex justify-center gap-4">
-        <Button onClick={() => setStudyMode(true)} size="lg" className="px-8">
+        <Button onClick={() => setStudyMode(true)} size="lg" className="px-8 accent-gradient">
           <Play className="w-5 h-5 mr-2" />
           Comenzar Estudio
         </Button>
@@ -271,7 +356,7 @@ export const FlashcardsManager = () => {
 
       {/* Lista de flashcards */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Mis Flashcards</h2>
+        <h2 className="text-xl font-semibold text-foreground">Mis Flashcards</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {flashcards.map((card) => (
             <Card key={card.id} className="card-hover">
@@ -281,15 +366,15 @@ export const FlashcardsManager = () => {
                     {card.difficulty === "easy" ? "Fácil" : 
                      card.difficulty === "medium" ? "Intermedio" : "Difícil"}
                   </Badge>
-                  <Badge variant="outline">{card.subject}</Badge>
+                  <Badge variant="outline" className="border-primary text-primary">{card.subject}</Badge>
                 </div>
-                <CardTitle className="text-sm line-clamp-2">{card.question}</CardTitle>
+                <CardTitle className="text-sm line-clamp-2 text-foreground">{card.question}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
-                    <span>Dominio</span>
-                    <span>{card.mastery}%</span>
+                    <span className="text-muted-foreground">Dominio</span>
+                    <span className="text-foreground">{card.mastery}%</span>
                   </div>
                   <Progress value={card.mastery} className="h-1" />
                 </div>

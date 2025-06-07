@@ -26,32 +26,32 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       title: "Notas Creadas", 
       value: "24", 
       icon: BookOpen, 
-      color: "text-orange-600",
-      bgColor: "bg-orange-100",
+      color: "text-blue-400",
+      bgColor: "bg-blue-500/10",
       emoji: "📚"
     },
     { 
       title: "Flashcards Estudiadas", 
       value: "156", 
       icon: Brain, 
-      color: "text-purple-600",
-      bgColor: "bg-purple-100",
+      color: "text-emerald-400",
+      bgColor: "bg-emerald-500/10",
       emoji: "🧠"
     },
     { 
       title: "Quizzes Completados", 
       value: "8", 
       icon: Trophy, 
-      color: "text-green-600",
-      bgColor: "bg-green-100",
+      color: "text-amber-400",
+      bgColor: "bg-amber-500/10",
       emoji: "🏆"
     },
     { 
       title: "Tiempo de Estudio", 
       value: "12h", 
       icon: Clock, 
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
+      color: "text-blue-400",
+      bgColor: "bg-blue-500/10",
       emoji: "⏰"
     },
   ];
@@ -90,7 +90,7 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       action: "files",
       icon: BookOpen,
       emoji: "📁",
-      gradient: "from-orange-400 to-red-400"
+      gradient: "from-blue-500 to-blue-600"
     },
     {
       title: "Estudiar Flashcards",
@@ -98,7 +98,7 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       action: "flashcards",
       icon: Brain,
       emoji: "🧠",
-      gradient: "from-purple-400 to-pink-400"
+      gradient: "from-emerald-500 to-emerald-600"
     },
     {
       title: "Hacer Quiz",
@@ -106,7 +106,7 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       action: "quiz",
       icon: Zap,
       emoji: "⚡",
-      gradient: "from-green-400 to-blue-400"
+      gradient: "from-blue-500 to-emerald-500"
     }
   ];
 
@@ -115,21 +115,21 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <Sparkles className="w-8 h-8 text-orange-500" />
-          <h1 className="text-4xl font-bold gradient-text">
+          <Sparkles className="w-8 h-8 text-blue-400" />
+          <h1 className="text-4xl font-bold text-slate-50">
             ¡Bienvenido de vuelta! 👋
           </h1>
         </div>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
           Tu plataforma inteligente de aprendizaje está lista. Continúa donde lo dejaste 
           y sigue construyendo tu conocimiento con el poder de la IA.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Badge className="bg-green-100 text-green-700 border-green-200">
+          <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
             <Heart className="w-3 h-3 mr-1" />
             Racha de 7 días
           </Badge>
-          <Badge className="bg-orange-100 text-orange-700 border-orange-200">
+          <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
             <Star className="w-3 h-3 mr-1" />
             Nivel Intermedio
           </Badge>
@@ -141,7 +141,7 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
         {quickActions.map((action, index) => (
           <Card 
             key={index} 
-            className="card-hover cursor-pointer border-0 warm-shadow overflow-hidden group"
+            className="card-professional cursor-pointer group"
             onClick={() => onNavigate(action.action)}
           >
             <CardHeader className="text-center pb-4">
@@ -151,17 +151,17 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
                 </div>
                 <div className="absolute -top-1 -right-1 text-2xl">{action.emoji}</div>
               </div>
-              <CardTitle className="text-lg group-hover:text-orange-600 transition-colors">
+              <CardTitle className="text-lg text-slate-50 group-hover:text-blue-400 transition-colors">
                 {action.title}
               </CardTitle>
-              <CardDescription className="text-sm leading-relaxed">
+              <CardDescription className="text-sm leading-relaxed text-slate-300">
                 {action.description}
               </CardDescription>
             </CardHeader>
             <div className="px-6 pb-6">
               <Button 
                 variant="outline" 
-                className="w-full group-hover:bg-orange-50 group-hover:border-orange-200 transition-colors"
+                className="w-full btn-secondary"
               >
                 Comenzar
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -174,12 +174,12 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="card-hover border-0 warm-shadow">
+          <Card key={index} className="card-professional">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-                  <p className="text-3xl font-bold flex items-center gap-2">
+                  <p className="text-sm font-medium text-slate-300">{stat.title}</p>
+                  <p className="text-3xl font-bold flex items-center gap-2 text-slate-50">
                     {stat.value}
                     <span className="text-lg">{stat.emoji}</span>
                   </p>
@@ -196,12 +196,12 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       {/* Progress and Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Progress Section */}
-        <Card className="border-0 warm-shadow">
+        <Card className="card-professional">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-orange-500" />
+            <CardTitle className="flex items-center gap-2 text-slate-50">
+              <TrendingUp className="w-5 h-5 text-blue-400" />
               Progreso Semanal
-              <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+              <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-400">
                 ¡Excelente!
               </Badge>
             </CardTitle>
@@ -210,33 +210,33 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="font-medium">Objetivo semanal 🎯</span>
-                  <span className="text-orange-600 font-semibold">75%</span>
+                  <span className="font-medium text-slate-300">Objetivo semanal 🎯</span>
+                  <span className="text-blue-400 font-semibold">75%</span>
                 </div>
-                <Progress value={75} className="h-3 bg-orange-100" />
+                <Progress value={75} className="h-3" />
               </div>
               <div>
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="font-medium">Flashcards completadas 🧠</span>
-                  <span className="text-green-600 font-semibold">90%</span>
+                  <span className="font-medium text-slate-300">Flashcards completadas 🧠</span>
+                  <span className="text-emerald-400 font-semibold">90%</span>
                 </div>
-                <Progress value={90} className="h-3 bg-green-100" />
+                <Progress value={90} className="h-3" />
               </div>
               <div>
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="font-medium">Quizzes realizados ⚡</span>
-                  <span className="text-blue-600 font-semibold">60%</span>
+                  <span className="font-medium text-slate-300">Quizzes realizados ⚡</span>
+                  <span className="text-blue-400 font-semibold">60%</span>
                 </div>
-                <Progress value={60} className="h-3 bg-blue-100" />
+                <Progress value={60} className="h-3" />
               </div>
             </div>
             
-            <div className="bg-gradient-to-r from-orange-50 to-green-50 p-4 rounded-xl border border-orange-100">
+            <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
               <div className="flex items-center gap-2 mb-2">
-                <Trophy className="w-5 h-5 text-orange-500" />
-                <span className="font-semibold text-orange-900">¡Sigue así!</span>
+                <Trophy className="w-5 h-5 text-blue-400" />
+                <span className="font-semibold text-slate-50">¡Sigue así!</span>
               </div>
-              <p className="text-sm text-orange-700">
+              <p className="text-sm text-slate-300">
                 Estás a solo 3 flashcards de completar tu objetivo semanal. 💪
               </p>
             </div>
@@ -244,10 +244,10 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
         </Card>
 
         {/* Activity Section */}
-        <Card className="border-0 warm-shadow">
+        <Card className="card-professional">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-orange-500" />
+            <CardTitle className="flex items-center gap-2 text-slate-50">
+              <Clock className="w-5 h-5 text-blue-400" />
               Actividad Reciente
             </CardTitle>
           </CardHeader>
@@ -257,18 +257,18 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
                 <div key={index} className="flex items-start gap-3 group">
                   <div className="flex-shrink-0">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${
-                      activity.type === 'success' ? 'bg-green-100' :
-                      activity.type === 'achievement' ? 'bg-orange-100' :
-                      'bg-blue-100'
+                      activity.type === 'success' ? 'bg-emerald-500/10' :
+                      activity.type === 'achievement' ? 'bg-blue-500/10' :
+                      'bg-blue-500/10'
                     }`}>
                       {activity.emoji}
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium group-hover:text-orange-600 transition-colors">
+                    <p className="text-sm font-medium text-slate-50 group-hover:text-blue-400 transition-colors">
                       {activity.action}
                     </p>
-                    <p className="text-xs text-muted-foreground">{activity.time}</p>
+                    <p className="text-xs text-slate-400">{activity.time}</p>
                   </div>
                 </div>
               ))}
@@ -276,7 +276,7 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
             
             <Button 
               variant="ghost" 
-              className="w-full mt-4 text-orange-600 hover:bg-orange-50"
+              className="w-full mt-4 text-blue-400 hover:bg-blue-500/10"
               onClick={() => onNavigate("progress")}
             >
               Ver todo el progreso
@@ -287,20 +287,20 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
       </div>
 
       {/* Motivational Section */}
-      <Card className="border-0 warm-shadow bg-gradient-to-r from-orange-50 to-green-50">
+      <Card className="card-professional bg-gradient-to-r from-blue-500/10 to-emerald-500/10">
         <CardContent className="p-8 text-center">
           <div className="space-y-4">
             <div className="text-4xl">🌟</div>
-            <h3 className="text-xl font-bold text-orange-900">
+            <h3 className="text-xl font-bold text-slate-50">
               "El aprendizaje nunca agota la mente"
             </h3>
-            <p className="text-orange-700 max-w-md mx-auto">
+            <p className="text-slate-300 max-w-md mx-auto">
               Cada día es una nueva oportunidad para crecer. ¡Sigue adelante con tu viaje de aprendizaje!
             </p>
             <div className="flex justify-center gap-2">
               <Button 
                 onClick={() => onNavigate("flashcards")}
-                className="warm-gradient text-white"
+                className="btn-primary"
               >
                 <Brain className="w-4 h-4 mr-2" />
                 Continuar Estudiando

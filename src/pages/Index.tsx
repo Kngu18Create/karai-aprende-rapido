@@ -8,6 +8,7 @@ import { NotesManager } from "@/components/notes/NotesManager";
 import { FlashcardsManager } from "@/components/flashcards/FlashcardsManager";
 import { QuizManager } from "@/components/quiz/QuizManager";
 import { ProgressOverview } from "@/components/progress/ProgressOverview";
+import { UniversityLogos } from "@/components/layout/UniversityLogos";
 
 const Index = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -37,11 +38,16 @@ const Index = () => {
   };
 
   if (showWelcome) {
-    return <Welcome onGetStarted={handleGetStarted} />;
+    return (
+      <div className="min-h-screen bg-slate-900">
+        <Welcome onGetStarted={handleGetStarted} />
+        <UniversityLogos />
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen tech-gradient">
+    <div className="min-h-screen bg-slate-900">
       <div className="flex w-full">
         <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
         <main className="flex-1 p-6 overflow-auto">

@@ -32,16 +32,16 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
   };
 
   return (
-    <div className="w-72 min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 border-r border-slate-700/50">
+    <div className="w-72 min-h-screen sidebar-bg">
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 primary-gradient rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25">
+            <div className="w-10 h-10 bg-accent-primary rounded-xl flex items-center justify-center shadow-lg">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold gradient-text">KarAI</span>
+              <span className="text-xl font-bold text-blue-400">KarAI</span>
               <div className="text-xs text-slate-400">Tu asistente de estudio</div>
             </div>
           </div>
@@ -64,8 +64,8 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
               className={cn(
                 "w-full flex items-center gap-4 px-4 py-3 rounded-xl text-left transition-all duration-300 group",
                 activeSection === item.id
-                  ? "primary-gradient text-white shadow-lg shadow-blue-500/25 transform scale-[1.02]"
-                  : "text-slate-300 hover:bg-slate-700/50 hover:text-white"
+                  ? "sidebar-item active"
+                  : "sidebar-item"
               )}
             >
               <div className="flex items-center gap-3">
@@ -83,7 +83,7 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
         </nav>
 
         {/* Quick Stats */}
-        <div className="mt-8 p-4 glass-card rounded-xl">
+        <div className="mt-8 stat-card">
           <div className="text-sm font-medium text-white mb-2">
             🎯 Progreso de hoy
           </div>
@@ -93,7 +93,7 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
               <span className="text-white font-medium">75%</span>
             </div>
             <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
-              <div className="progress-gradient h-2 rounded-full w-3/4 shadow-sm"></div>
+              <div className="bg-accent-primary h-2 rounded-full w-3/4 shadow-sm"></div>
             </div>
           </div>
         </div>

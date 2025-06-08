@@ -275,7 +275,7 @@ export const Welcome = ({
       {/* CTA Final */}
       <section className="max-w-4xl mx-auto px-6 py-16">
         <Card className="glass-effect border-0 warm-shadow">
-          <CardContent className="p-12 text-center space-y-8">
+          <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
             <div className="space-y-4">
               <h2 className="text-4xl font-bold">
                 ¿Listo para transformar tu manera de estudiar?

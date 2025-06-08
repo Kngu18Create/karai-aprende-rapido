@@ -133,7 +133,7 @@ export const Welcome = ({
                       </div>
                     </div>
                     
-                    <div className="bg-slate-500">
+                    <div className="rounded-lg p-4 space-y-2 bg-slate-300">
                       <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
                         <Badge variant="secondary" className="bg-orange-100 text-orange-700">Photosíntesis</Badge>

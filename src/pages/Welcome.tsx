@@ -179,7 +179,7 @@ export const Welcome = ({
                   <div className="absolute -top-2 -right-2 text-2xl">{feature.emoji}</div>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold text-center">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
               </CardContent>
@@ -190,7 +190,7 @@ export const Welcome = ({
       {/* Benefits Section */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <Card className="glass-effect border-0 warm-shadow">
-          <CardContent className="p-12">
+          <CardContent className="p-12mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div className="space-y-4">

@@ -114,7 +114,7 @@ export const Welcome = ({
           </div>
 
           <div className="relative animate-float">
-            <Card className="glass-effect warm-shadow border-0 overflow-hidden">
+            <Card className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">

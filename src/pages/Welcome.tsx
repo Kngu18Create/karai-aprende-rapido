@@ -94,9 +94,7 @@ export const Welcome = ({
                 Comenzar Gratis
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button variant="outline" size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
-                Ver Demo
-              </Button>
+              
             </div>
 
             <div className="flex items-center gap-6 pt-4">

@@ -258,7 +258,7 @@ export const Welcome = ({
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => <Card key={index} className="card-hover border-0 warm-shadow">
-              <CardContent className="p-8 space-y-6">
+              <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                 <div className="text-lg leading-relaxed">"{testimonial.text}"</div>
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">{testimonial.avatar}</div>

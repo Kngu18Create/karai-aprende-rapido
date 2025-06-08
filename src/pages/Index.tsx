@@ -39,7 +39,7 @@ const Index = () => {
 
   if (showWelcome) {
     return (
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen bg-modern-primary">
         <Welcome onGetStarted={handleGetStarted} />
         <UniversityLogos />
       </div>
@@ -47,10 +47,10 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-modern-light">
       <div className="flex w-full">
         <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6 overflow-auto bg-gray-50">
           <div className="animate-fade-up">
             {renderActiveSection()}
           </div>

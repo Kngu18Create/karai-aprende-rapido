@@ -32,24 +32,24 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
   };
 
   return (
-    <div className="w-72 min-h-screen sidebar-bg">
+    <div className="w-72 min-h-screen sidebar-modern">
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-accent-primary rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold text-blue-400">KarAI</span>
-              <div className="text-xs text-slate-400">Tu asistente de estudio</div>
+              <span className="text-xl font-bold text-blue-400 font-poppins">KarAI</span>
+              <div className="text-xs text-gray-400">Tu asistente de estudio</div>
             </div>
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={handleBackToWelcome}
-            className="text-slate-400 hover:text-white hover:bg-slate-700/50"
+            className="text-gray-400 hover:text-white hover:bg-slate-700/50"
           >
             <ArrowLeft className="w-4 h-4" />
           </Button>
@@ -64,8 +64,8 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
               className={cn(
                 "w-full flex items-center gap-4 px-4 py-3 rounded-xl text-left transition-all duration-300 group",
                 activeSection === item.id
-                  ? "sidebar-item active"
-                  : "sidebar-item"
+                  ? "sidebar-item-modern active"
+                  : "sidebar-item-modern"
               )}
             >
               <div className="flex items-center gap-3">
@@ -83,27 +83,27 @@ export const Sidebar = ({ activeSection, onSectionChange }: SidebarProps) => {
         </nav>
 
         {/* Quick Stats */}
-        <div className="mt-8 stat-card">
+        <div className="mt-8 bg-blue-500/10 p-5 rounded-xl border border-blue-500/20">
           <div className="text-sm font-medium text-white mb-2">
             🎯 Progreso de hoy
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Objetivo diario</span>
+              <span className="text-gray-400">Objetivo diario</span>
               <span className="text-white font-medium">75%</span>
             </div>
             <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
-              <div className="bg-accent-primary h-2 rounded-full w-3/4 shadow-sm"></div>
+              <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full w-3/4 shadow-sm"></div>
             </div>
           </div>
         </div>
 
         {/* Motivational Quote */}
-        <div className="mt-6 p-4 bg-blue-900/20 rounded-xl border border-blue-500/20">
-          <div className="text-sm text-blue-400 font-medium mb-1">
+        <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+          <div className="text-sm text-purple-400 font-medium mb-1">
             💡 Tip del día
           </div>
-          <div className="text-xs text-slate-300 leading-relaxed">
+          <div className="text-xs text-gray-300 leading-relaxed">
             "La repetición espaciada mejora la retención hasta un 90%. ¡Sigue practicando!"
           </div>
         </div>

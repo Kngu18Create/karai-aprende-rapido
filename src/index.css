@@ -1,56 +1,51 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* KarAI Design System - Dark Professional Theme */
+/* KarAI Modern Design System - Professional Educational Theme */
 
 @layer base {
   :root {
-    /* Dark Professional Theme - Primary Colors */
-    --bg-primary: 15 23 42;        /* #0f172a - Deep slate blue */
-    --bg-secondary: 30 41 59;      /* #1e293b - Lighter slate for cards */
-    --bg-tertiary: 51 65 85;       /* #334155 - Medium slate for elevated surfaces */
-    
-    /* Accent Colors */
-    --accent-primary: 59 130 246;   /* #3b82f6 - Electric blue */
-    --accent-secondary: 16 185 129; /* #10b981 - Emerald green */
+    /* Modern Professional Theme Colors */
+    --bg-primary: 15 23 42;           /* #0f172a - Deep navy for main backgrounds */
+    --bg-secondary: 26 35 50;         /* #1a2332 - Rich dark blue alternative */
+    --bg-light: 248 250 252;          /* #f8fafc - Very light gray */
+    --bg-white: 255 255 255;          /* #ffffff - Clean white */
     
     /* Text Colors */
-    --text-primary: 248 250 252;    /* #f8fafc - Pure white */
-    --text-secondary: 203 213 225;  /* #cbd5e1 - Light gray */
-    --text-muted: 100 116 139;      /* #64748b - Medium gray */
+    --text-primary: 31 41 55;         /* #1f2937 - Dark gray for light backgrounds */
+    --text-secondary: 107 114 128;    /* #6b7280 - Medium gray */
+    --text-light: 255 255 255;        /* #ffffff - White for dark backgrounds */
+    --text-muted: 156 163 175;        /* #9ca3af - Light gray for muted text */
     
-    /* UI Colors */
-    --border-primary: 71 85 105;    /* #475569 - Slate border */
-    --border-accent: 59 130 246;    /* #3b82f6 - Blue border */
-    
-    /* Semantic colors */
-    --success: 16 185 129;          /* #10b981 - Success green */
-    --warning: 245 158 11;          /* #f59e0b - Warning amber */
-    --error: 239 68 68;             /* #ef4444 - Error red */
+    /* Accent Colors */
+    --accent-primary: 59 130 246;     /* #3b82f6 - Bright blue */
+    --accent-purple: 139 92 246;      /* #8b5cf6 - Modern purple */
+    --accent-success: 16 185 129;     /* #10b981 - Fresh green */
+    --accent-warning: 245 158 11;     /* #f59e0b - Amber yellow */
     
     /* Shadcn UI Variables */
-    --background: var(--bg-primary);
+    --background: var(--bg-white);
     --foreground: var(--text-primary);
-    --card: var(--bg-secondary);
+    --card: var(--bg-white);
     --card-foreground: var(--text-primary);
-    --popover: var(--bg-secondary);
+    --popover: var(--bg-white);
     --popover-foreground: var(--text-primary);
     --primary: var(--accent-primary);
-    --primary-foreground: 255 255 255;
-    --secondary: var(--bg-tertiary);
-    --secondary-foreground: var(--text-secondary);
-    --muted: var(--bg-tertiary);
-    --muted-foreground: var(--text-muted);
+    --primary-foreground: var(--text-light);
+    --secondary: var(--bg-light);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--bg-light);
+    --muted-foreground: var(--text-secondary);
     --accent: var(--accent-primary);
-    --accent-foreground: 255 255 255;
-    --destructive: var(--error);
-    --destructive-foreground: 248 250 252;
-    --border: var(--border-primary);
-    --input: var(--border-primary);
+    --accent-foreground: var(--text-light);
+    --destructive: 239 68 68;
+    --destructive-foreground: var(--text-light);
+    --border: 229 231 235;
+    --input: 229 231 235;
     --ring: var(--accent-primary);
     --radius: 0.75rem;
   }
@@ -62,118 +57,120 @@
   }
 
   body {
-    @apply bg-slate-900 text-slate-50 font-inter min-h-screen;
+    @apply bg-background-primary text-text-light font-inter min-h-screen;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 100%);
+    background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(26, 35, 50) 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-slate-50 font-semibold;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply font-semibold;
   }
 }
 
 @layer utilities {
-  /* Professional Dark Theme Utilities */
-  .bg-primary {
+  /* Modern Design System Utilities */
+  
+  /* Background Utilities */
+  .bg-modern-primary {
     background: rgb(15, 23, 42);
   }
   
-  .bg-secondary {
-    background: linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(51, 65, 85) 100%);
+  .bg-modern-secondary {
+    background: rgb(26, 35, 50);
   }
   
-  .bg-card-gradient {
-    background: linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(51, 65, 85) 100%);
-    border: 1px solid rgba(59, 130, 246, 0.1);
+  .bg-modern-light {
+    background: rgb(248, 250, 252);
   }
   
-  .bg-accent-primary {
-    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(37, 99, 235) 100%);
+  .bg-modern-white {
+    background: rgb(255, 255, 255);
   }
   
-  .bg-accent-secondary {
-    background: linear-gradient(135deg, rgb(16, 185, 129) 0%, rgb(5, 150, 105) 100%);
+  /* Card Styles - Clean White Cards */
+  .card-modern {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 transition-all duration-300;
   }
   
-  .text-primary {
-    color: rgb(248, 250, 252);
+  .card-modern:hover {
+    @apply shadow-xl transform -translate-y-1;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
   
-  .text-secondary {
-    color: rgb(203, 213, 225);
+  .card-modern-dark {
+    @apply bg-slate-800 rounded-xl shadow-lg border border-slate-700 transition-all duration-300;
   }
   
-  .text-muted {
-    color: rgb(100, 116, 139);
-  }
-  
-  .border-accent {
-    border-color: rgba(59, 130, 246, 0.1);
+  .card-modern-dark:hover {
+    @apply shadow-xl transform -translate-y-1;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
   
   /* Button Styles */
-  .btn-primary {
-    @apply bg-accent-primary text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  .btn-modern-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 shadow-md;
   }
   
-  .btn-primary:hover {
-    @apply transform -translate-y-0.5;
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+  .btn-modern-primary:hover {
+    @apply shadow-lg transform -translate-y-0.5;
   }
   
-  .btn-secondary {
-    @apply bg-transparent text-blue-400 border-2 border-blue-400 font-medium px-6 py-3 rounded-xl transition-all duration-200;
-  }
-  
-  .btn-secondary:hover {
-    @apply bg-blue-400 text-white transform -translate-y-0.5;
-  }
-  
-  /* Card Styles */
-  .card-professional {
-    @apply bg-card-gradient rounded-xl p-6 transition-all duration-300;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-professional:hover {
-    @apply transform -translate-y-1;
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
-  }
-  
-  .stat-card {
-    @apply rounded-xl p-5 transition-all duration-300;
-    background: rgba(59, 130, 246, 0.05);
-    border: 1px solid rgba(59, 130, 246, 0.1);
-  }
-  
-  .stat-number {
-    @apply text-blue-400 text-3xl font-bold;
-  }
-  
-  .stat-label {
-    @apply text-slate-300 text-sm;
+  .btn-modern-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition-all duration-200;
   }
   
   /* Sidebar Styles */
-  .sidebar-bg {
-    background: linear-gradient(180deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 100%);
+  .sidebar-modern {
+    background: linear-gradient(180deg, rgb(15, 23, 42) 0%, rgb(26, 35, 50) 100%);
     border-right: 1px solid rgba(59, 130, 246, 0.1);
   }
   
-  .sidebar-item {
-    @apply text-slate-300 font-medium px-4 py-3 rounded-xl transition-all duration-200;
+  .sidebar-item-modern {
+    @apply text-gray-300 font-medium px-4 py-3 rounded-xl transition-all duration-200;
   }
   
-  .sidebar-item:hover {
-    background: rgba(59, 130, 246, 0.1);
-    @apply text-blue-300;
+  .sidebar-item-modern:hover {
+    @apply bg-blue-500/10 text-blue-300;
   }
   
-  .sidebar-item.active {
-    @apply bg-accent-primary text-white font-semibold;
+  .sidebar-item-modern.active {
+    @apply bg-blue-500 text-white font-semibold;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Progress and Statistics */
+  .stat-card-modern {
+    @apply bg-white rounded-xl p-6 shadow-md border border-gray-100 transition-all duration-300;
+  }
+  
+  .stat-card-modern:hover {
+    @apply shadow-lg transform -translate-y-1;
+  }
+  
+  .stat-number-modern {
+    @apply text-blue-500 text-3xl font-bold;
+  }
+  
+  .stat-label-modern {
+    @apply text-gray-600 text-sm font-medium;
+  }
+  
+  /* Text Utilities */
+  .text-modern-primary {
+    color: rgb(31, 41, 55);
+  }
+  
+  .text-modern-secondary {
+    color: rgb(107, 114, 128);
+  }
+  
+  .text-modern-light {
+    color: rgb(255, 255, 255);
+  }
+  
+  .text-modern-muted {
+    color: rgb(156, 163, 175);
   }
 }
 
@@ -210,9 +207,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(51, 65, 85) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.1);
-  color: rgb(248, 250, 252);
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(229, 231, 235);
+  color: rgb(31, 41, 55);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .flashcard-back {
@@ -228,10 +226,11 @@
 
 .section-title {
   text-align: center;
-  color: rgb(248, 250, 252);
+  color: rgb(255, 255, 255);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 48px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .university-slider {
@@ -255,7 +254,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(248, 250, 252, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease;
@@ -266,18 +265,6 @@
   background: rgba(59, 130, 246, 0.1);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
-}
-
-.university-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: brightness(0.8) contrast(1.2);
-  transition: filter 0.3s ease;
-}
-
-.university-logo:hover img {
-  filter: brightness(1) contrast(1);
 }
 
 @keyframes scroll-left {
@@ -299,7 +286,7 @@
     transition: none;
   }
   
-  .card-professional:hover,
+  .card-modern:hover,
   .university-logo:hover {
     transform: none;
   }

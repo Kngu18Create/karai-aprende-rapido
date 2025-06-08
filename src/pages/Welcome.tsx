@@ -187,13 +187,13 @@ export const Welcome = ({
 
       {/* Benefits Section */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <Card className="glass-effect border-0 warm-shadow">
-          <CardContent className="p-12mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+        <Card className="glass-effect border-0 warm-shadow bg-inherit">
+          <CardContent className="p-12mt-6 p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <h2 className="text-3xl font-bold">
-                    Diseñado para <span className="text-orange-600">estudiantes como tú</span>
+                  <h2 className="text-3xl font-bold text-green-500">
+                    Diseñado para <span className="text-slate-50">estudiantes como tú</span>
                   </h2>
                   <p className="text-lg text-muted-foreground">
                     Ya seas estudiante universitario, profesional en formación o autodidacta, 
@@ -206,7 +206,7 @@ export const Welcome = ({
                       <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                         <benefit.icon className="w-6 h-6 text-green-600" />
                       </div>
-                      <span className="text-lg font-medium">{benefit.text}</span>
+                      <span className="text-lg font-medium text-yellow-500">{benefit.text}</span>
                     </div>)}
                 </div>
 
@@ -257,11 +257,11 @@ export const Welcome = ({
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => <Card key={index} className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-                <div className="text-lg leading-relaxed">"{testimonial.text}"</div>
+                <div className="text-lg leading-relaxed bg-inherit">"{testimonial.text}"</div>
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">{testimonial.avatar}</div>
                   <div>
-                    <div className="font-semibold">{testimonial.author}</div>
+                    <div className="font-semibold bg-inherit">{testimonial.author}</div>
                     <div className="text-sm text-muted-foreground">{testimonial.role}</div>
                   </div>
                 </div>

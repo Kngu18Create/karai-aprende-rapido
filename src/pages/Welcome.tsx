@@ -277,7 +277,7 @@ export const Welcome = ({
         <Card className="glass-effect border-0 warm-shadow">
           <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
             <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <h2 className="text-4xl font-bold">
+              <h2 className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                 ¿Listo para transformar tu manera de estudiar?
               </h2>
               <p className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">

@@ -114,8 +114,8 @@ export const Welcome = ({
           </div>
 
           <div className="relative animate-float">
-            <Card className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+            <Card className="glass-effect warm-shadow border-0 overflow-hidden">
+              <CardContent className="p-8">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
@@ -123,7 +123,7 @@ export const Welcome = ({
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   </div>
                   
-                  <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <BookOpen className="w-6 h-6 text-orange-600" />
                       <div className="flex-1">
@@ -133,7 +133,7 @@ export const Welcome = ({
                       </div>
                     </div>
                     
-                    <div className="rounded-lg p-4 space-y-2 bg-slate-300">
+                    <div className="bg-orange-50 rounded-lg p-4 space-y-2">
                       <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
                         <Badge variant="secondary" className="bg-orange-100 text-orange-700">Photosíntesis</Badge>
@@ -143,11 +143,11 @@ export const Welcome = ({
                     </div>
                     
                     <div className="flex gap-3 pt-2">
-                      <Button size="sm" variant="outline" className="flex-1">
+                      <Button size="sm" variant="outline" className="flex-1 bg-slate-300 hover:bg-slate-200">
                         <Brain className="w-4 h-4 mr-2" />
                         Flashcards
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1">
+                      <Button size="sm" variant="outline" className="flex-1 bg-slate-300 hover:bg-slate-200">
                         <Zap className="w-4 h-4 mr-2" />
                         Quiz
                       </Button>

@@ -170,7 +170,7 @@ export const Welcome = ({
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => <Card key={index} className={`card-hover cursor-pointer border-0 warm-shadow ${hoveredFeature === index ? 'ring-2 ring-orange-300' : ''}`} onMouseEnter={() => setHoveredFeature(index)} onMouseLeave={() => setHoveredFeature(null)}>
+          {features.map((feature, index) => <Card key={index} onMouseEnter={() => setHoveredFeature(index)} onMouseLeave={() => setHoveredFeature(null)} className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               <CardContent className="p-8 text-center space-y-6">
                 <div className="relative">
                   <div className="w-16 h-16 warm-gradient rounded-2xl flex items-center justify-center mx-auto shadow-lg">

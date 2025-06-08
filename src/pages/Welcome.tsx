@@ -273,7 +273,7 @@ export const Welcome = ({
       </section>
 
       {/* CTA Final */}
-      <section className="max-w-4xl mx-auto px-6 py-16">
+      <section className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
         <Card className="glass-effect border-0 warm-shadow">
           <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
             <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">

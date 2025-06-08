@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,56 +5,40 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Upload, 
-  FileText, 
-  File, 
-  Presentation, 
-  Music,
-  Folder,
-  Star,
-  Trash2,
-  Download,
-  Eye
-} from "lucide-react";
+import { Upload, FileText, File, Presentation, Music, Folder, Star, Trash2, Download, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 export const FileUpload = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
-  const { toast } = useToast();
-
-  const [files] = useState([
-    { 
-      id: 1, 
-      name: "Matemáticas Avanzadas.pdf", 
-      type: "pdf", 
-      size: "2.4 MB", 
-      folder: "Matemáticas",
-      favorite: true,
-      uploadDate: "2024-01-15"
-    },
-    { 
-      id: 2, 
-      name: "Historia Universal.docx", 
-      type: "doc", 
-      size: "1.8 MB", 
-      folder: "Historia",
-      favorite: false,
-      uploadDate: "2024-01-14"
-    },
-    { 
-      id: 3, 
-      name: "Clase Física Cuántica.mp3", 
-      type: "audio", 
-      size: "45.2 MB", 
-      folder: "Física",
-      favorite: true,
-      uploadDate: "2024-01-13"
-    },
-  ]);
-
+  const {
+    toast
+  } = useToast();
+  const [files] = useState([{
+    id: 1,
+    name: "Matemáticas Avanzadas.pdf",
+    type: "pdf",
+    size: "2.4 MB",
+    folder: "Matemáticas",
+    favorite: true,
+    uploadDate: "2024-01-15"
+  }, {
+    id: 2,
+    name: "Historia Universal.docx",
+    type: "doc",
+    size: "1.8 MB",
+    folder: "Historia",
+    favorite: false,
+    uploadDate: "2024-01-14"
+  }, {
+    id: 3,
+    name: "Clase Física Cuántica.mp3",
+    type: "audio",
+    size: "45.2 MB",
+    folder: "Física",
+    favorite: true,
+    uploadDate: "2024-01-13"
+  }]);
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -65,21 +48,18 @@ export const FileUpload = () => {
       setDragActive(false);
     }
   };
-
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFiles(e.dataTransfer.files);
     }
   };
-
   const handleFiles = (fileList: FileList) => {
     setUploading(true);
     setUploadProgress(0);
-    
+
     // Simular progreso de subida
     const interval = setInterval(() => {
       setUploadProgress(prev => {
@@ -88,7 +68,7 @@ export const FileUpload = () => {
           setUploading(false);
           toast({
             title: "¡Archivo subido exitosamente!",
-            description: "El procesamiento con IA comenzará en unos momentos.",
+            description: "El procesamiento con IA comenzará en unos momentos."
           });
           return 100;
         }
@@ -96,7 +76,6 @@ export const FileUpload = () => {
       });
     }, 200);
   };
-
   const getFileIcon = (type: string) => {
     switch (type) {
       case "pdf":
@@ -111,9 +90,7 @@ export const FileUpload = () => {
         return <File className="w-6 h-6 text-gray-500" />;
     }
   };
-
-  return (
-    <div className="max-w-6xl mx-auto space-y-8">
+  return <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold gradient-text">Gestión de Archivos</h1>
         <p className="text-muted-foreground">
@@ -128,38 +105,23 @@ export const FileUpload = () => {
         </TabsList>
         
         <TabsContent value="upload" className="space-y-6">
-          <Card>
+          <Card className="bg-blue-800">
             <CardHeader>
               <CardTitle>Subir Nuevo Material</CardTitle>
               <CardDescription>
                 Formatos soportados: PDF, DOC, DOCX, PPT, PPTX, TXT, MP3, WAV
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div
-                className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                  dragActive ? "border-primary bg-primary/5" : "border-border"
-                }`}
-                onDragEnter={handleDrag}
-                onDragLeave={handleDrag}
-                onDragOver={handleDrag}
-                onDrop={handleDrop}
-              >
-                <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+            <CardContent className="space-y-6 rounded-none bg-blue-800">
+              <div className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${dragActive ? "border-primary bg-primary/5" : "border-border"}`} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>
+                <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4 bg-inherit" />
                 <h3 className="text-lg font-semibold mb-2">
                   Arrastra tus archivos aquí o haz clic para seleccionar
                 </h3>
                 <p className="text-muted-foreground mb-4">
                   Tamaño máximo: 50MB por archivo
                 </p>
-                <Input
-                  type="file"
-                  multiple
-                  accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp3,.wav"
-                  className="hidden"
-                  id="file-upload"
-                  onChange={(e) => e.target.files && handleFiles(e.target.files)}
-                />
+                <Input type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp3,.wav" className="hidden" id="file-upload" onChange={e => e.target.files && handleFiles(e.target.files)} />
                 <Label htmlFor="file-upload">
                   <Button variant="outline" className="cursor-pointer">
                     Seleccionar Archivos
@@ -167,23 +129,17 @@ export const FileUpload = () => {
                 </Label>
               </div>
 
-              {uploading && (
-                <div className="space-y-2">
+              {uploading && <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span>Subiendo archivo...</span>
                     <span>{uploadProgress}%</span>
                   </div>
                   <Progress value={uploadProgress} className="h-2" />
-                </div>
-              )}
+                </div>}
 
-              <div className="space-y-4">
+              <div className="space-y-4 bg-inherit">
                 <Label htmlFor="folder">Carpeta de Destino</Label>
-                <Input
-                  id="folder"
-                  placeholder="Ej: Matemáticas, Historia, Ciencias..."
-                  defaultValue="General"
-                />
+                <Input id="folder" placeholder="Ej: Matemáticas, Historia, Ciencias..." defaultValue="General" />
               </div>
             </CardContent>
           </Card>
@@ -201,8 +157,7 @@ export const FileUpload = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {files.map((file) => (
-              <Card key={file.id} className="card-hover">
+            {files.map(file => <Card key={file.id} className="card-hover">
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -212,11 +167,7 @@ export const FileUpload = () => {
                         <p className="text-xs text-muted-foreground">{file.size}</p>
                       </div>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-yellow-500 hover:text-yellow-600"
-                    >
+                    <Button variant="ghost" size="sm" className="text-yellow-500 hover:text-yellow-600">
                       <Star className={`w-4 h-4 ${file.favorite ? 'fill-current' : ''}`} />
                     </Button>
                   </div>
@@ -245,11 +196,9 @@ export const FileUpload = () => {
                     </Button>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>;
 };

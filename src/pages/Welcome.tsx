@@ -112,7 +112,7 @@ export const Welcome = ({
           </div>
 
           <div className="relative animate-float">
-            <Card className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+            <Card className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 px-[8px] my-[23px] mx-0 py-[12px]">
               <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export const Welcome = ({
                   </div>
                   
                   <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 my-0 px-0 mx-0 py-[2px]">
                       <BookOpen className="w-6 h-6 text-orange-600" />
                       <div className="flex-1 bg-transparent">
                         <div className="h-3 bg-orange-100 rounded-full">
@@ -271,30 +271,7 @@ export const Welcome = ({
       </section>
 
       {/* CTA Final */}
-      <section className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-        <Card className="glass-effect border-0 warm-shadow">
-          <CardContent className="mt-6 p-4 border border-purple-500/20 rounded-xl bg-black">
-            <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <h2 className="text-4xl font-bold">
-                ¿Listo para transformar tu manera de estudiar?
-              </h2>
-              <p className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-                Únete a miles de estudiantes que ya están aprendiendo más rápido con KarAI
-              </p>
-            </div>
-
-            <Button onClick={onGetStarted} size="lg" className="warm-gradient text-white font-semibold px-12 py-6 text-xl rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-              <Sparkles className="w-6 h-6 mr-3" />
-              Comenzar mi Viaje de Aprendizaje
-              <ArrowRight className="w-6 h-6 ml-3" />
-            </Button>
-
-            <p className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              No se requiere tarjeta de crédito • Configuración en 2 minutos • Cancela cuando quieras
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+      
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-6 py-8 border-t border-orange-100">

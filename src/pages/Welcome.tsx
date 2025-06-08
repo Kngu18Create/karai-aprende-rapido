@@ -280,7 +280,7 @@ export const Welcome = ({
               <h2 className="text-4xl font-bold">
                 ¿Listo para transformar tu manera de estudiar?
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                 Únete a miles de estudiantes que ya están aprendiendo más rápido con KarAI
               </p>
             </div>

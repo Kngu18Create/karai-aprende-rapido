@@ -291,7 +291,7 @@ export const Welcome = ({
               <ArrowRight className="w-6 h-6 ml-3" />
             </Button>
 
-            <p className="text-sm text-muted-foreground">
+            <p className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               No se requiere tarjeta de crédito • Configuración en 2 minutos • Cancela cuando quieras
             </p>
           </CardContent>

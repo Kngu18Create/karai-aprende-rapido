@@ -71,7 +71,7 @@ export const Welcome = ({
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+      <section className="max-w-7xl mx-auto px-6 py-12 lg:py-20 bg-inherit">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-up">
             <div className="space-y-4">

@@ -61,9 +61,7 @@ export const Welcome = ({
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-bold gradient-text">KarAI</span>
-            <Badge variant="secondary" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
-              Beta
-            </Badge>
+            <Badge variant="secondary" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">Beta</Badge>
           </div>
           <Button onClick={onGetStarted} variant="outline" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
             Ir al Dashboard
@@ -128,12 +126,12 @@ export const Welcome = ({
                       <BookOpen className="w-6 h-6 text-orange-600" />
                       <div className="flex-1">
                         <div className="h-3 bg-orange-100 rounded-full">
-                          <div className="h-3 bg-orange-500 rounded-full w-3/4 animate-pulse"></div>
+                          <div className="h-3 rounded-full w-3/4 animate-pulse bg-blue-950"></div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="rounded-lg p-4 space-y-2 bg-slate-300">
+                    <div className="rounded-lg p-4 space-y-2 bg-sky-200">
                       <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
                         <Badge variant="secondary" className="bg-orange-100 text-orange-700">Photosíntesis</Badge>
@@ -143,11 +141,11 @@ export const Welcome = ({
                     </div>
                     
                     <div className="flex gap-3 pt-2">
-                      <Button size="sm" variant="outline" className="flex-1">
+                      <Button size="sm" variant="outline" className="flex-1 rounded-sm bg-sky-300 hover:bg-sky-200 text-cyan-950">
                         <Brain className="w-4 h-4 mr-2" />
                         Flashcards
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1">
+                      <Button size="sm" variant="outline" className="flex-1 bg-sky-300 hover:bg-sky-200 text-cyan-950">
                         <Zap className="w-4 h-4 mr-2" />
                         Quiz
                       </Button>

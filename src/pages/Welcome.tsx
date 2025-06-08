@@ -61,7 +61,7 @@ export const Welcome = ({
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-bold gradient-text">KarAI</span>
-            <Badge variant="secondary" className="bg-orange-100 text-orange-700 border-orange-200">
+            <Badge variant="secondary" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
               Beta
             </Badge>
           </div>

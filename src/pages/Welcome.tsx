@@ -276,7 +276,7 @@ export const Welcome = ({
       <section className="max-w-4xl mx-auto px-6 py-16">
         <Card className="glass-effect border-0 warm-shadow">
           <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-            <div className="space-y-4">
+            <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               <h2 className="text-4xl font-bold">
                 ¿Listo para transformar tu manera de estudiar?
               </h2>

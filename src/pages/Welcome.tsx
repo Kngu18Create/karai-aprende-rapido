@@ -275,7 +275,7 @@ export const Welcome = ({
       {/* CTA Final */}
       <section className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
         <Card className="glass-effect border-0 warm-shadow">
-          <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+          <CardContent className="mt-6 p-4 border border-purple-500/20 rounded-xl bg-black">
             <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
               <h2 className="text-4xl font-bold">
                 ¿Listo para transformar tu manera de estudiar?

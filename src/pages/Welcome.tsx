@@ -124,17 +124,17 @@ export const Welcome = ({
                   <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                     <div className="flex items-center gap-3">
                       <BookOpen className="w-6 h-6 text-orange-600" />
-                      <div className="flex-1">
+                      <div className="flex-1 bg-transparent">
                         <div className="h-3 bg-orange-100 rounded-full">
-                          <div className="h-3 rounded-full w-3/4 animate-pulse bg-blue-950"></div>
+                          <div className="h-3 rounded-full w-3/4 animate-pulse bg-emerald-900"></div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="rounded-lg p-4 space-y-2 bg-sky-200">
+                    <div className="rounded-lg p-4 space-y-2 bg-violet-200">
                       <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
-                        <Badge variant="secondary" className="bg-orange-100 text-orange-700">Photosíntesis</Badge>
+                        <Badge variant="secondary" className="text-black-700 bg-red-300">Photosíntesis</Badge>
                         <Badge variant="secondary" className="bg-green-100 text-green-700 ml-2">Clorofila</Badge>
                         <Badge variant="secondary" className="bg-blue-100 text-blue-700 ml-2">ATP</Badge>
                       </div>

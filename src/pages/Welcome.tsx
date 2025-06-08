@@ -134,7 +134,7 @@ export const Welcome = ({
                     <div className="rounded-lg p-4 space-y-2 bg-violet-200">
                       <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
-                        <Badge variant="secondary" className="text-black-950bg-red-300">Photosíntesis</Badge>
+                        <Badge variant="secondary" className="text-black-950bg-red-300 bg-red-950">Photosíntesis</Badge>
                         <Badge variant="secondary" className="bg-green-100 text-green-700 ml-2">Clorofila</Badge>
                         <Badge variant="secondary" className="bg-blue-100 text-blue-700 ml-2">ATP</Badge>
                       </div>

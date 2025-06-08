@@ -123,7 +123,7 @@ export const Welcome = ({
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
                     <div className="flex items-center gap-3">
                       <BookOpen className="w-6 h-6 text-orange-600" />
                       <div className="flex-1">

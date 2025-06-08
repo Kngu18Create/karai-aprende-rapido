@@ -57,7 +57,7 @@
   }
 
   body {
-    @apply bg-background-primary text-text-light font-inter min-h-screen;
+    @apply text-white font-inter min-h-screen;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(26, 35, 50) 100%);
   }

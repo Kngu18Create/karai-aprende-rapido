@@ -1,78 +1,58 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  BookOpen, 
-  Brain, 
-  Clock,
-  Zap,
-  Users,
-  Trophy,
-  ArrowRight,
-  Sparkles,
-  Heart,
-  Star
-} from "lucide-react";
-
+import { BookOpen, Brain, Clock, Zap, Users, Trophy, ArrowRight, Sparkles, Heart, Star } from "lucide-react";
 interface WelcomeProps {
   onGetStarted: () => void;
 }
-
-export const Welcome = ({ onGetStarted }: WelcomeProps) => {
+export const Welcome = ({
+  onGetStarted
+}: WelcomeProps) => {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
-
-  const features = [
-    {
-      icon: BookOpen,
-      title: "Notas Inteligentes",
-      description: "Convierte cualquier archivo o audio en notas organizadas automáticamente",
-      emoji: "📚"
-    },
-    {
-      icon: Brain,
-      title: "Flashcards Personalizadas",
-      description: "Sistema de repetición espaciada que se adapta a tu ritmo de aprendizaje",
-      emoji: "🧠"
-    },
-    {
-      icon: Zap,
-      title: "Quizzes Adaptativos",
-      description: "Evaluaciones inteligentes que identifican tus fortalezas y áreas de mejora",
-      emoji: "⚡"
-    }
-  ];
-
-  const benefits = [
-    { text: "Ahorra hasta 70% del tiempo de estudio", icon: Clock },
-    { text: "Mejora la retención con técnicas científicas", icon: Brain },
-    { text: "Personalización basada en tu progreso", icon: Trophy }
-  ];
-
-  const testimonials = [
-    {
-      text: "KarAI transformó mi manera de estudiar. Ahora puedo enfocarme en entender conceptos en lugar de solo tomar notas.",
-      author: "María González",
-      role: "Estudiante de Medicina",
-      avatar: "👩‍⚕️"
-    },
-    {
-      text: "Increíble cómo puede generar flashcards tan precisas desde mis clases grabadas. Es como tener un asistente personal.",
-      author: "Carlos Ruiz",
-      role: "Estudiante de Ingeniería",
-      avatar: "👨‍💻"
-    },
-    {
-      text: "Los quizzes adaptativos me ayudaron a identificar exactamente qué temas necesitaba repasar para mi examen final.",
-      author: "Ana Martínez",
-      role: "Estudiante de Derecho",
-      avatar: "👩‍⚖️"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen gradient-bg">
+  const features = [{
+    icon: BookOpen,
+    title: "Notas Inteligentes",
+    description: "Convierte cualquier archivo o audio en notas organizadas automáticamente",
+    emoji: "📚"
+  }, {
+    icon: Brain,
+    title: "Flashcards Personalizadas",
+    description: "Sistema de repetición espaciada que se adapta a tu ritmo de aprendizaje",
+    emoji: "🧠"
+  }, {
+    icon: Zap,
+    title: "Quizzes Adaptativos",
+    description: "Evaluaciones inteligentes que identifican tus fortalezas y áreas de mejora",
+    emoji: "⚡"
+  }];
+  const benefits = [{
+    text: "Ahorra hasta 70% del tiempo de estudio",
+    icon: Clock
+  }, {
+    text: "Mejora la retención con técnicas científicas",
+    icon: Brain
+  }, {
+    text: "Personalización basada en tu progreso",
+    icon: Trophy
+  }];
+  const testimonials = [{
+    text: "KarAI transformó mi manera de estudiar. Ahora puedo enfocarme en entender conceptos en lugar de solo tomar notas.",
+    author: "María González",
+    role: "Estudiante de Medicina",
+    avatar: "👩‍⚕️"
+  }, {
+    text: "Increíble cómo puede generar flashcards tan precisas desde mis clases grabadas. Es como tener un asistente personal.",
+    author: "Carlos Ruiz",
+    role: "Estudiante de Ingeniería",
+    avatar: "👨‍💻"
+  }, {
+    text: "Los quizzes adaptativos me ayudaron a identificar exactamente qué temas necesitaba repasar para mi examen final.",
+    author: "Ana Martínez",
+    role: "Estudiante de Derecho",
+    avatar: "👩‍⚖️"
+  }];
+  return <div className="min-h-screen gradient-bg">
       {/* Header */}
       <header className="w-full p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -109,20 +89,12 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={onGetStarted}
-                size="lg" 
-                className="warm-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-              >
+              <Button onClick={onGetStarted} size="lg" className="warm-gradient text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                 <Sparkles className="w-5 h-5 mr-2" />
                 Comenzar Gratis
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="px-8 py-6 text-lg rounded-xl border-2 border-orange-200 hover:border-orange-300 transition-colors"
-              >
+              <Button variant="outline" size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
                 Ver Demo
               </Button>
             </div>
@@ -137,9 +109,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
                 <span className="text-sm text-muted-foreground">+2,000 estudiantes</span>
               </div>
               <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 <span className="text-sm text-muted-foreground ml-1">4.9/5</span>
               </div>
             </div>
@@ -202,15 +172,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card 
-              key={index}
-              className={`card-hover cursor-pointer border-0 warm-shadow ${
-                hoveredFeature === index ? 'ring-2 ring-orange-300' : ''
-              }`}
-              onMouseEnter={() => setHoveredFeature(index)}
-              onMouseLeave={() => setHoveredFeature(null)}
-            >
+          {features.map((feature, index) => <Card key={index} className={`card-hover cursor-pointer border-0 warm-shadow ${hoveredFeature === index ? 'ring-2 ring-orange-300' : ''}`} onMouseEnter={() => setHoveredFeature(index)} onMouseLeave={() => setHoveredFeature(null)}>
               <CardContent className="p-8 text-center space-y-6">
                 <div className="relative">
                   <div className="w-16 h-16 warm-gradient rounded-2xl flex items-center justify-center mx-auto shadow-lg">
@@ -223,8 +185,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </section>
 
@@ -245,14 +206,12 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
                 </div>
 
                 <div className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center gap-4">
+                  {benefits.map((benefit, index) => <div key={index} className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                         <benefit.icon className="w-6 h-6 text-green-600" />
                       </div>
                       <span className="text-lg font-medium">{benefit.text}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
 
                 <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl">
@@ -300,8 +259,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="card-hover border-0 warm-shadow">
+          {testimonials.map((testimonial, index) => <Card key={index} className="card-hover border-0 warm-shadow">
               <CardContent className="p-8 space-y-6">
                 <div className="text-lg leading-relaxed">"{testimonial.text}"</div>
                 <div className="flex items-center gap-3">
@@ -312,8 +270,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
                   </div>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </section>
 
@@ -330,11 +287,7 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
               </p>
             </div>
 
-            <Button 
-              onClick={onGetStarted}
-              size="lg" 
-              className="warm-gradient text-white font-semibold px-12 py-6 text-xl rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-            >
+            <Button onClick={onGetStarted} size="lg" className="warm-gradient text-white font-semibold px-12 py-6 text-xl rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
               <Sparkles className="w-6 h-6 mr-3" />
               Comenzar mi Viaje de Aprendizaje
               <ArrowRight className="w-6 h-6 ml-3" />
@@ -362,6 +315,5 @@ export const Welcome = ({ onGetStarted }: WelcomeProps) => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };

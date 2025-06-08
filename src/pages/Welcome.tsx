@@ -126,26 +126,26 @@ export const Welcome = ({
                       <BookOpen className="w-6 h-6 text-orange-600" />
                       <div className="flex-1 bg-transparent">
                         <div className="h-3 bg-orange-100 rounded-full">
-                          <div className="h-3 rounded-full w-3/4 animate-pulse bg-emerald-900"></div>
+                          <div className="h-3 rounded-full w-3/4 animate-pulse bg-green-400"></div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="rounded-lg p-4 space-y-2 bg-violet-200">
-                      <h4 className="font-semibold text-orange-900">📚 Conceptos Clave Identificados</h4>
+                    <div className="p-4 space-y-2 bg-violet-500 rounded-2xl">
+                      <h4 className="font-semibold text-orange-50">📚 Conceptos Clave Identificados</h4>
                       <div className="space-y-1">
-                        <Badge variant="secondary" className="text-black-950bg-red-300 bg-red-950">Photosíntesis</Badge>
+                        <Badge variant="secondary" className="text-black-950bg-red-300 bg-amber-50">Photosíntesis</Badge>
                         <Badge variant="secondary" className="bg-green-100 text-green-700 ml-2">Clorofila</Badge>
                         <Badge variant="secondary" className="bg-blue-100 text-blue-700 ml-2">ATP</Badge>
                       </div>
                     </div>
                     
                     <div className="flex gap-3 pt-2">
-                      <Button size="sm" variant="outline" className="flex-1 rounded-sm bg-sky-300 hover:bg-sky-200 text-cyan-950">
+                      <Button size="sm" variant="outline" className="flex-1 bg-violet-500 hover:bg-violet-400 text-yellow-300 rounded-full">
                         <Brain className="w-4 h-4 mr-2" />
                         Flashcards
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1 bg-sky-300 hover:bg-sky-200 text-cyan-950">
+                      <Button size="sm" variant="outline" className="flex-1 bg-violet-500 hover:bg-violet-400 text-yellow-400 rounded-full">
                         <Zap className="w-4 h-4 mr-2" />
                         Quiz
                       </Button>

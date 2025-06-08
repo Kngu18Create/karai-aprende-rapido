@@ -65,7 +65,7 @@ export const Welcome = ({
               Beta
             </Badge>
           </div>
-          <Button onClick={onGetStarted} variant="outline" className="hidden md:flex">
+          <Button onClick={onGetStarted} variant="outline" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg transition-all duration-200">
             Ir al Dashboard
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>

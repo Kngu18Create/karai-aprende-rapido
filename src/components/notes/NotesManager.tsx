@@ -60,11 +60,10 @@ export const NotesManager = () => {
   );
 
   const renderNotePreview = (content: string) => {
-    // Simular renderizado de markdown básico
     const lines = content.split('\n').slice(0, 3);
     return lines.map((line, index) => {
       if (line.startsWith('# ')) {
-        return <h3 key={index} className="font-bold text-sm">{line.replace('# ', '')}</h3>;
+        return <h3 key={index} className="font-bold text-sm text-gray-800">{line.replace('# ', '')}</h3>;
       } else if (line.startsWith('## ')) {
         return <h4 key={index} className="font-semibold text-xs text-muted-foreground">{line.replace('## ', '')}</h4>;
       } else if (line.includes('**')) {
@@ -77,13 +76,12 @@ export const NotesManager = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold gradient-text">Mis Notas Inteligentes</h1>
+        <h1 className="text-3xl font-bold text-gray-800 font-poppins">Mis Notas Inteligentes</h1>
         <p className="text-muted-foreground">
           Notas enriquecidas generadas automáticamente por IA con formato avanzado
         </p>
       </div>
 
-      {/* Header Actions */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -91,7 +89,7 @@ export const NotesManager = () => {
             placeholder="Buscar notas por título o etiquetas..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 bg-background border-border"
           />
         </div>
         <div className="flex gap-2">
@@ -99,31 +97,30 @@ export const NotesManager = () => {
             <Plus className="w-4 h-4 mr-2" />
             Nueva Nota
           </Button>
-          <Button>
+          <Button className="bg-blue-600 hover:bg-blue-700">
             <Brain className="w-4 h-4 mr-2" />
             Generar con IA
           </Button>
         </div>
       </div>
 
-      {/* Notes Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredNotes.map((note) => (
-          <Card key={note.id} className="card-hover h-fit">
+          <Card key={note.id} className="bg-card border-border hover:shadow-lg transition-all duration-200 h-fit">
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
-                <CardTitle className="text-base leading-6 line-clamp-2">
+                <CardTitle className="text-base leading-6 line-clamp-2 text-gray-800">
                   {note.title}
                 </CardTitle>
                 <div className="flex gap-1 ml-2">
                   {note.aiGenerated && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs bg-blue-50 text-blue-600">
                       <Brain className="w-3 h-3 mr-1" />
                       IA
                     </Badge>
                   )}
                   {note.favorite && (
-                    <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                    <Star className="w-4 h-4 text-amber-500 fill-current" />
                   )}
                 </div>
               </div>
@@ -133,22 +130,19 @@ export const NotesManager = () => {
             </CardHeader>
             
             <CardContent className="space-y-4">
-              {/* Preview del contenido */}
               <div className="space-y-1 min-h-[60px]">
                 {renderNotePreview(note.content)}
               </div>
 
-              {/* Tags */}
               <div className="flex flex-wrap gap-1">
                 {note.tags.map((tag) => (
-                  <Badge key={tag} variant="outline" className="text-xs">
+                  <Badge key={tag} variant="outline" className="text-xs border-border">
                     <Hash className="w-2 h-2 mr-1" />
                     {tag}
                   </Badge>
                 ))}
               </div>
 
-              {/* Características del formato */}
               <div className="flex items-center gap-4 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <List className="w-3 h-3" />
@@ -164,17 +158,16 @@ export const NotesManager = () => {
                 </div>
               </div>
 
-              {/* Actions */}
               <div className="flex gap-1 pt-2">
-                <Button variant="ghost" size="sm" className="flex-1">
+                <Button variant="ghost" size="sm" className="flex-1 text-blue-600">
                   <Eye className="w-3 h-3 mr-1" />
                   Ver
                 </Button>
-                <Button variant="ghost" size="sm" className="flex-1">
+                <Button variant="ghost" size="sm" className="flex-1 text-blue-600">
                   <Edit className="w-3 h-3 mr-1" />
                   Editar
                 </Button>
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" className="text-red-500">
                   <Trash2 className="w-3 h-3" />
                 </Button>
               </div>
@@ -187,16 +180,15 @@ export const NotesManager = () => {
         ))}
       </div>
 
-      {/* Empty State */}
       {filteredNotes.length === 0 && (
-        <Card className="text-center py-12">
+        <Card className="text-center py-12 bg-card border-border">
           <CardContent>
             <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No se encontraron notas</h3>
+            <h3 className="text-lg font-semibold mb-2 text-gray-800">No se encontraron notas</h3>
             <p className="text-muted-foreground mb-4">
               {searchTerm ? "Intenta con otros términos de búsqueda" : "Sube archivos para generar tus primeras notas con IA"}
             </p>
-            <Button>
+            <Button className="bg-blue-600 hover:bg-blue-700">
               <Brain className="w-4 h-4 mr-2" />
               Generar Notas con IA
             </Button>

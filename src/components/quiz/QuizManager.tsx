@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -24,7 +23,7 @@ export const QuizManager = () => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [showFeedback, setShowFeedback] = useState(false);
   const [score, setScore] = useState(0);
-  const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutos
+  const [timeRemaining, setTimeRemaining] = useState(300);
 
   const [availableQuizzes] = useState([
     {
@@ -105,7 +104,6 @@ export const QuizManager = () => {
     if (currentQuestionIndex < currentQuiz.questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Quiz completado
       setQuizMode(false);
       setCurrentQuestionIndex(0);
       setScore(0);
@@ -114,10 +112,10 @@ export const QuizManager = () => {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "easy": return "text-green-600 bg-green-100";
-      case "medium": return "text-yellow-600 bg-yellow-100";
-      case "hard": return "text-red-600 bg-red-100";
-      default: return "text-gray-600 bg-gray-100";
+      case "easy": return "text-green-600 bg-green-50 border-green-200";
+      case "medium": return "text-blue-600 bg-blue-50 border-blue-200";
+      case "hard": return "text-purple-600 bg-purple-50 border-purple-200";
+      default: return "text-muted-foreground bg-muted";
     }
   };
 
@@ -130,18 +128,17 @@ export const QuizManager = () => {
   if (quizMode) {
     return (
       <div className="max-w-4xl mx-auto space-y-6">
-        {/* Header del quiz */}
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold">{currentQuiz.title}</h2>
+            <h2 className="text-2xl font-bold text-gray-800">{currentQuiz.title}</h2>
             <p className="text-muted-foreground">
               Pregunta {currentQuestionIndex + 1} de {currentQuiz.questions.length}
             </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span className="font-mono">{formatTime(timeRemaining)}</span>
+              <Clock className="w-4 h-4 text-muted-foreground" />
+              <span className="font-mono text-gray-700">{formatTime(timeRemaining)}</span>
             </div>
             <Button variant="outline" onClick={() => setQuizMode(false)}>
               Salir
@@ -149,19 +146,17 @@ export const QuizManager = () => {
           </div>
         </div>
 
-        {/* Progreso */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span>Progreso</span>
-            <span>{Math.round(((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100)}%</span>
+            <span className="text-gray-700">Progreso</span>
+            <span className="text-blue-600">{Math.round(((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100)}%</span>
           </div>
           <Progress value={((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100} className="h-2" />
         </div>
 
-        {/* Pregunta */}
-        <Card>
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-lg">{currentQuestion.question}</CardTitle>
+            <CardTitle className="text-lg text-gray-800">{currentQuestion.question}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <RadioGroup
@@ -174,12 +169,12 @@ export const QuizManager = () => {
                   <RadioGroupItem value={index.toString()} id={`option-${index}`} />
                   <Label 
                     htmlFor={`option-${index}`} 
-                    className={`flex-1 p-3 rounded-lg border cursor-pointer transition-colors ${
+                    className={`flex-1 p-3 rounded-lg border cursor-pointer transition-all duration-200 ${
                       showFeedback && index === currentQuestion.correctAnswer
                         ? "bg-green-50 border-green-200 text-green-800"
                         : showFeedback && selectedAnswer === index.toString() && index !== currentQuestion.correctAnswer
                         ? "bg-red-50 border-red-200 text-red-800"
-                        : "hover:bg-muted"
+                        : "hover:bg-muted/20 border-border bg-background text-gray-800"
                     }`}
                   >
                     {option}
@@ -201,14 +196,14 @@ export const QuizManager = () => {
                     ) : (
                       <XCircle className="w-5 h-5 text-red-600" />
                     )}
-                    <span className="font-semibold">
+                    <span className="font-semibold text-gray-800">
                       {parseInt(selectedAnswer) === currentQuestion.correctAnswer ? "¡Correcto!" : "Incorrecto"}
                     </span>
                   </div>
-                  <p className="text-sm">{currentQuestion.explanation}</p>
+                  <p className="text-sm text-gray-700">{currentQuestion.explanation}</p>
                 </div>
 
-                <Button onClick={handleNextQuestion} className="w-full">
+                <Button onClick={handleNextQuestion} className="w-full bg-blue-600 hover:bg-blue-700">
                   {currentQuestionIndex < currentQuiz.questions.length - 1 ? "Siguiente Pregunta" : "Finalizar Quiz"}
                 </Button>
               </div>
@@ -218,7 +213,7 @@ export const QuizManager = () => {
               <Button 
                 onClick={handleAnswerSubmit} 
                 disabled={!selectedAnswer}
-                className="w-full"
+                className="w-full bg-blue-600 hover:bg-blue-700"
               >
                 Confirmar Respuesta
               </Button>
@@ -226,10 +221,9 @@ export const QuizManager = () => {
           </CardContent>
         </Card>
 
-        {/* Puntuación actual */}
         <div className="text-center">
-          <p className="text-lg">
-            Puntuación actual: <span className="font-bold">{score}/{currentQuestionIndex + (showFeedback ? 1 : 0)}</span>
+          <p className="text-lg text-gray-800">
+            Puntuación actual: <span className="font-bold text-blue-600">{score}/{currentQuestionIndex + (showFeedback ? 1 : 0)}</span>
           </p>
         </div>
       </div>
@@ -239,47 +233,45 @@ export const QuizManager = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold gradient-text">Quizzes Inteligentes</h1>
+        <h1 className="text-3xl font-bold text-gray-800 font-poppins">Quizzes Inteligentes</h1>
         <p className="text-muted-foreground">
           Evaluaciones personalizadas generadas automáticamente desde tu contenido
         </p>
       </div>
 
-      {/* Estadísticas */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
             <ClipboardList className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">{availableQuizzes.length}</p>
+            <p className="text-2xl font-bold text-gray-800">{availableQuizzes.length}</p>
             <p className="text-sm text-muted-foreground">Quizzes disponibles</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
-            <Trophy className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">85%</p>
+            <Trophy className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+            <p className="text-2xl font-bold text-gray-800">85%</p>
             <p className="text-sm text-muted-foreground">Puntuación promedio</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
             <Target className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">12</p>
+            <p className="text-2xl font-bold text-gray-800">12</p>
             <p className="text-sm text-muted-foreground">Quizzes completados</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold">2h 30m</p>
+            <p className="text-2xl font-bold text-gray-800">2h 30m</p>
             <p className="text-sm text-muted-foreground">Tiempo estudiando</p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Botones de acción */}
       <div className="flex justify-center gap-4">
-        <Button size="lg">
+        <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
           <Brain className="w-5 h-5 mr-2" />
           Generar Quiz Nuevo
         </Button>
@@ -289,21 +281,20 @@ export const QuizManager = () => {
         </Button>
       </div>
 
-      {/* Lista de quizzes */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Quizzes Disponibles</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Quizzes Disponibles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {availableQuizzes.map((quiz) => (
-            <Card key={quiz.id} className="card-hover">
+            <Card key={quiz.id} className="bg-card border-border hover:shadow-lg transition-all duration-200">
               <CardHeader>
                 <div className="flex justify-between items-start mb-2">
                   <Badge className={getDifficultyColor(quiz.difficulty)}>
                     {quiz.difficulty === "easy" ? "Fácil" : 
                      quiz.difficulty === "medium" ? "Intermedio" : "Difícil"}
                   </Badge>
-                  <Badge variant="outline">{quiz.subject}</Badge>
+                  <Badge variant="outline" className="border-blue-500 text-blue-600">{quiz.subject}</Badge>
                 </div>
-                <CardTitle className="text-base">{quiz.title}</CardTitle>
+                <CardTitle className="text-base text-gray-800">{quiz.title}</CardTitle>
                 <CardDescription className="text-sm">
                   {quiz.description}
                 </CardDescription>
@@ -316,13 +307,13 @@ export const QuizManager = () => {
 
                 {quiz.completed && quiz.lastScore && (
                   <div className="flex items-center gap-2 text-sm">
-                    <Trophy className="w-4 h-4 text-yellow-600" />
-                    <span>Última puntuación: {quiz.lastScore}%</span>
+                    <Trophy className="w-4 h-4 text-amber-600" />
+                    <span className="text-gray-700">Última puntuación: {quiz.lastScore}%</span>
                   </div>
                 )}
 
                 <Button 
-                  className="w-full" 
+                  className={quiz.completed ? "w-full" : "w-full bg-blue-600 hover:bg-blue-700"} 
                   variant={quiz.completed ? "outline" : "default"}
                   onClick={() => setQuizMode(true)}
                 >

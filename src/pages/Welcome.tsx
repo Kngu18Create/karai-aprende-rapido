@@ -210,12 +210,7 @@ export const Welcome = ({
                     </div>)}
                 </div>
 
-                <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl">
-                  <Heart className="w-6 h-6 text-red-500" />
-                  <span className="font-medium text-orange-900">
-                    Gratis para estudiantes. Siempre.
-                  </span>
-                </div>
+                
               </div>
 
               <div className="grid grid-cols-2 gap-4">

@@ -168,8 +168,8 @@ export const Welcome = ({
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => <Card key={index} onMouseEnter={() => setHoveredFeature(index)} onMouseLeave={() => setHoveredFeature(null)} className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+          {features.map((feature, index) => <Card key={index} onMouseEnter={() => setHoveredFeature(index)} onMouseLeave={() => setHoveredFeature(null)} className="mt-6 p-4 bg-purple-500/10 border border-purple-500/20 rounded-3xl">
+              <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20 mx-[20px] px-[20px] my-[4px] py-px">
                 <div className="relative">
                   <div className="w-16 h-16 warm-gradient rounded-2xl flex items-center justify-center mx-auto shadow-lg">
                     <feature.icon className="w-8 h-8 text-white" />
@@ -241,29 +241,7 @@ export const Welcome = ({
       </section>
 
       {/* Testimonials */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-4xl font-bold">Lo que dicen nuestros estudiantes</h2>
-          <p className="text-xl text-muted-foreground">
-            Miles de estudiantes ya están aprendiendo más rápido con KarAI
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => <Card key={index} className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <CardContent className="mt-6 p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
-                <div className="text-lg leading-relaxed bg-inherit">"{testimonial.text}"</div>
-                <div className="flex items-center gap-3">
-                  <div className="text-3xl">{testimonial.avatar}</div>
-                  <div>
-                    <div className="font-semibold bg-inherit">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>)}
-        </div>
-      </section>
+      
 
       {/* CTA Final */}
       

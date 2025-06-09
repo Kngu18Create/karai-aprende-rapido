@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -83,7 +84,7 @@ export const FlashcardsManager = () => {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "easy": return "text-green-600 bg-green-50 border-green-200";
+      case "easy": return "text-emerald-600 bg-emerald-50 border-emerald-200";
       case "medium": return "text-blue-600 bg-blue-50 border-blue-200";
       case "hard": return "text-purple-600 bg-purple-50 border-purple-200";
       default: return "text-muted-foreground bg-muted";
@@ -216,7 +217,7 @@ export const FlashcardsManager = () => {
                     Incorrecta
                   </Button>
                   <Button 
-                    className="bg-green-600 hover:bg-green-700 text-white flex-1"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white flex-1"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAnswer(true);
@@ -249,7 +250,7 @@ export const FlashcardsManager = () => {
                       onClick={() => handleOptionSelect(option.id)}
                       className={`w-full p-3 text-left rounded-lg border transition-all duration-200 ${
                         showAnswer && option.isCorrect
-                          ? "bg-green-50 border-green-200 text-green-800"
+                          ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                           : showAnswer && selectedOption === option.id && !option.isCorrect
                           ? "bg-red-50 border-red-200 text-red-800"
                           : "border-border bg-muted/20 hover:bg-muted/50 text-gray-800"
@@ -320,7 +321,7 @@ export const FlashcardsManager = () => {
         </Card>
         <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
-            <Target className="w-8 h-8 text-green-600 mx-auto mb-2" />
+            <Target className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
             <p className="text-2xl font-bold text-gray-800">60%</p>
             <p className="text-sm text-muted-foreground">Dominio promedio</p>
           </CardContent>

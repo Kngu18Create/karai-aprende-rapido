@@ -67,7 +67,7 @@ export const ProgressOverview = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-800 font-poppins">Tu Progreso de Aprendizaje</h1>
+        <h1 className="text-3xl font-bold text-slate-800 font-poppins">Tu Progreso de Aprendizaje</h1>
         <p className="text-muted-foreground">
           Visualiza tu rendimiento y alcanza tus metas de estudio
         </p>
@@ -77,28 +77,28 @@ export const ProgressOverview = () => {
         <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
             <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-gray-800">156</p>
+            <p className="text-2xl font-bold text-slate-800">156</p>
             <p className="text-sm text-muted-foreground">Conceptos dominados</p>
           </CardContent>
         </Card>
         <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
-            <Clock className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-gray-800">24h</p>
+            <Clock className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
+            <p className="text-2xl font-bold text-slate-800">24h</p>
             <p className="text-sm text-muted-foreground">Tiempo total</p>
           </CardContent>
         </Card>
         <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
-            <Zap className="w-8 h-8 text-amber-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-gray-800">7</p>
+            <Zap className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+            <p className="text-2xl font-bold text-slate-800">7</p>
             <p className="text-sm text-muted-foreground">Días de racha</p>
           </CardContent>
         </Card>
         <Card className="bg-card border-border hover:shadow-lg transition-all duration-200">
           <CardContent className="p-4 text-center">
             <Award className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-gray-800">85%</p>
+            <p className="text-2xl font-bold text-slate-800">85%</p>
             <p className="text-sm text-muted-foreground">Eficiencia promedio</p>
           </CardContent>
         </Card>

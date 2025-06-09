@@ -76,7 +76,7 @@ export const NotesManager = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-800 font-poppins">Mis Notas Inteligentes</h1>
+        <h1 className="text-3xl font-bold text-slate-800 font-poppins">Mis Notas Inteligentes</h1>
         <p className="text-muted-foreground">
           Notas enriquecidas generadas automáticamente por IA con formato avanzado
         </p>
@@ -109,7 +109,7 @@ export const NotesManager = () => {
           <Card key={note.id} className="bg-card border-border hover:shadow-lg transition-all duration-200 h-fit">
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
-                <CardTitle className="text-base leading-6 line-clamp-2 text-gray-800">
+                <CardTitle className="text-base leading-6 line-clamp-2 text-slate-800">
                   {note.title}
                 </CardTitle>
                 <div className="flex gap-1 ml-2">
@@ -120,7 +120,7 @@ export const NotesManager = () => {
                     </Badge>
                   )}
                   {note.favorite && (
-                    <Star className="w-4 h-4 text-amber-500 fill-current" />
+                    <Star className="w-4 h-4 text-blue-500 fill-current" />
                   )}
                 </div>
               </div>
@@ -184,7 +184,7 @@ export const NotesManager = () => {
         <Card className="text-center py-12 bg-card border-border">
           <CardContent>
             <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2 text-gray-800">No se encontraron notas</h3>
+            <h3 className="text-lg font-semibold mb-2 text-slate-800">No se encontraron notas</h3>
             <p className="text-muted-foreground mb-4">
               {searchTerm ? "Intenta con otros términos de búsqueda" : "Sube archivos para generar tus primeras notas con IA"}
             </p>

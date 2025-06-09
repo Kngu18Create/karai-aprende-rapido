@@ -7,13 +7,13 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, FileText, File, Presentation, Music, Folder, Star, Trash2, Download, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
 export const FileUpload = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploading, setUploading] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   const [files] = useState([{
     id: 1,
     name: "Matemáticas Avanzadas.pdf",
@@ -39,7 +39,6 @@ export const FileUpload = () => {
     favorite: true,
     uploadDate: "2024-01-13"
   }]);
-
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -49,7 +48,6 @@ export const FileUpload = () => {
       setDragActive(false);
     }
   };
-
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -58,11 +56,9 @@ export const FileUpload = () => {
       handleFiles(e.dataTransfer.files);
     }
   };
-
   const handleFiles = (fileList: FileList) => {
     setUploading(true);
     setUploadProgress(0);
-
     const interval = setInterval(() => {
       setUploadProgress(prev => {
         if (prev >= 100) {
@@ -78,7 +74,6 @@ export const FileUpload = () => {
       });
     }, 200);
   };
-
   const getFileIcon = (type: string) => {
     switch (type) {
       case "pdf":
@@ -93,12 +88,10 @@ export const FileUpload = () => {
         return <File className="w-6 h-6 text-muted-foreground" />;
     }
   };
-
-  return (
-    <div className="max-w-6xl mx-auto space-y-8">
+  return <div className="max-w-6xl mx-auto space-y-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-bold text-gray-800 font-poppins">Gestión de Archivos</h1>
-        <p className="text-muted-foreground">
+        <p className="text-gray-600">
           Sube tus materiales de estudio y deja que KarAI genere contenido inteligente
         </p>
       </div>
@@ -118,17 +111,7 @@ export const FileUpload = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div 
-                className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                  dragActive 
-                    ? "border-primary bg-primary/5" 
-                    : "border-border bg-muted/20"
-                }`}
-                onDragEnter={handleDrag}
-                onDragLeave={handleDrag}
-                onDragOver={handleDrag}
-                onDrop={handleDrop}
-              >
+              <div className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${dragActive ? "border-primary bg-primary/5" : "border-border bg-muted/20"}`} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>
                 <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2 text-gray-800">
                   Arrastra tus archivos aquí o haz clic para seleccionar
@@ -136,14 +119,7 @@ export const FileUpload = () => {
                 <p className="text-muted-foreground mb-4">
                   Tamaño máximo: 50MB por archivo
                 </p>
-                <Input 
-                  type="file" 
-                  multiple 
-                  accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp3,.wav" 
-                  className="hidden" 
-                  id="file-upload"
-                  onChange={e => e.target.files && handleFiles(e.target.files)}
-                />
+                <Input type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp3,.wav" className="hidden" id="file-upload" onChange={e => e.target.files && handleFiles(e.target.files)} />
                 <Label htmlFor="file-upload">
                   <Button variant="outline" className="cursor-pointer">
                     Seleccionar Archivos
@@ -151,24 +127,17 @@ export const FileUpload = () => {
                 </Label>
               </div>
 
-              {uploading && (
-                <div className="space-y-2">
+              {uploading && <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-700">Subiendo archivo...</span>
                     <span className="text-primary">{uploadProgress}%</span>
                   </div>
                   <Progress value={uploadProgress} className="h-2" />
-                </div>
-              )}
+                </div>}
 
               <div className="space-y-4">
                 <Label htmlFor="folder" className="text-gray-700">Carpeta de Destino</Label>
-                <Input 
-                  id="folder" 
-                  placeholder="Ej: Matemáticas, Historia, Ciencias..." 
-                  defaultValue="General"
-                  className="bg-background border-border"
-                />
+                <Input id="folder" placeholder="Ej: Matemáticas, Historia, Ciencias..." defaultValue="General" className="bg-background border-border" />
               </div>
             </CardContent>
           </Card>
@@ -186,8 +155,7 @@ export const FileUpload = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {files.map(file => (
-              <Card key={file.id} className="bg-card border-border hover:shadow-lg transition-all duration-200">
+            {files.map(file => <Card key={file.id} className="bg-card border-border hover:shadow-lg transition-all duration-200">
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -226,11 +194,9 @@ export const FileUpload = () => {
                     </Button>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>;
 };
